@@ -1,5 +1,5 @@
 .chips-div {
-  padding: 1rem;
+  padding: 0.8rem 2rem;
   background: var(--background-secondary-color);
   border-top: 1px solid var(--background-light-color);
 }

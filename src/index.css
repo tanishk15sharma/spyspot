@@ -11,7 +11,8 @@
   list-style: none;
 }
 :root {
-  --primary-color: #fff;
+  --primary-color: #f5f5f4;
+  --secondary-text: #aaaaaa;
 
   /* --secondary-color: #3e4152; */
   /* --action-color: #f26430;confused */
