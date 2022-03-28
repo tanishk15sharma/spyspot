@@ -6,9 +6,13 @@ import { VideosListing } from "../../components/videos-listing/VideosListing";
 const VideoListing = () => {
   return (
     <div>
-      <Nav />
+      <div className="left">
+        <Nav />
+      </div>
       <Sidebar />
-      <VideosListing />
+      <div className="left">
+        <VideosListing />
+      </div>
     </div>
   );
 };
