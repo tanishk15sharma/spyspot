@@ -11,7 +11,7 @@ const VideoCard = () => {
       <div className="pd-sm flex-sb">
         <div className="video-title">TANISHK is looking winnerr in</div>
         <i
-          class="fa-solid fa-ellipsis-vertical"
+          className="fa-solid fa-ellipsis-vertical"
           onClick={() => setToggleOptions((val) => !val)}
         ></i>
       </div>
@@ -20,11 +20,11 @@ const VideoCard = () => {
         style={{ display: !toggleOptions && "none" }}
       >
         <div className="option">
-          <i class="fa-solid fa-clock-rotate-left margin-r-sm"></i>
+          <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
           Save to Watch Later
         </div>
         <div className="option">
-          <i class="fa-solid fa-thumbs-up margin-r-sm"></i>
+          <i className="fa-solid fa-thumbs-up margin-r-sm"></i>
           Like Video
         </div>
       </div>
