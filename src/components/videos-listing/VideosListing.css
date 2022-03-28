@@ -1,3 +1,7 @@
+.relative {
+  position: relative;
+}
+
 .hero-div {
   background: var(--background-primary-color);
   /* width: 100%; */
@@ -12,4 +16,20 @@
   display: grid;
   padding: 2rem 3rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.video-options {
+  background: var(--background-secondary-color);
+  padding: 0.5rem 1rem;
+  width: 80%;
+  left: 20%;
+  position: absolute;
+  top: 85%;
+  z-index: 5;
+}
+.option {
+  border-bottom: 1px solid var(--background-light-color);
+  padding: 0.5rem 0rem;
+}
+.margin-r-sm {
+  margin-right: 0.5rem;
 }
