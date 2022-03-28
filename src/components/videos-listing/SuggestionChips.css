@@ -1,0 +1,18 @@
+.chips-div {
+  padding: 1rem;
+  background: var(--background-secondary-color);
+  border-top: 1px solid var(--background-light-color);
+}
+.btn-round {
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  background-color: var(--background-light-color);
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid var(--action-color);
+}
+.btn-round:hover {
+  color: var(--background-light-color);
+  background-color: var(--primary-color);
+}
