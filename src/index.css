@@ -20,6 +20,7 @@
   --background-secondary-color: #212121;
   --background-primary-color: #030303;
   --background-light-color: #353535;
+  --error-color: #ef4444;
 }
 
 html {
