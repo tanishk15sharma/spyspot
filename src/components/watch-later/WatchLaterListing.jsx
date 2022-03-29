@@ -1,21 +1,32 @@
 import React from "react";
+import { useWatchLater } from "../../contexts/watch-later";
 import "./WatchLaterListing.css";
 const WatchLaterListing = () => {
+  const { watchLater, setWatchLater } = useWatchLater();
+  console.log(watchLater);
   return (
-    <div className="flex">
-      <div className="page-design">
-        <h1>Saved videos for you , WATCH IT !</h1>
-      </div>
-      <div className="horiz-card">
-        <div className="sm-img">
-          <img />
+    <>
+      {watchLater.map((video) => (
+        <div className="horiz-card">
+          <div className="sm-img-div">
+            <img
+              src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
+              className="full-img"
+            />
+          </div>
+          <div className="horiz-infos">
+            <p className="flex-space-btw">
+              <span className="txt-xxl">{video.title}</span>
+              <div>
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
+            </p>
+            <div className="video-type">{video.category}</div>
+            <p className="video-desp">{video.description}</p>
+          </div>
         </div>
-        <div className="horiz-infos">
-          <p>video details will be here</p>
-          <div>type of video</div>
-        </div>
-      </div>
-    </div>
+      ))}
+    </>
   );
 };
 

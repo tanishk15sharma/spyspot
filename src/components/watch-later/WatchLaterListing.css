@@ -1,3 +1,32 @@
-.page-design {
-  border: 1px solid red;
+.horiz-card {
+  display: flex;
+  padding: 2rem 3rem 1rem 3rem;
+  gap: 1rem;
+  border-bottom: 1px solid var(--background-secondary-color);
+}
+.sm-img-div {
+  width: 40%;
+}
+.full-img {
+  width: 100%;
+}
+.horiz-infos {
+  width: 100%;
+  padding: 1rem;
+}
+.txt-xxl {
+  font-size: 2rem;
+}
+.flex-space-btw {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.fa-trash-can {
+  font-size: 1.6rem;
+  color: gray;
+}
+.video-desp {
+  margin-top: 1.4rem;
+  color: gray;
 }
