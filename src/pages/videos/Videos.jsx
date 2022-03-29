@@ -3,7 +3,7 @@ import { Nav } from "../../components/nav/Nav";
 import { Sidebar } from "../../components/sidebar/Sidebar";
 import { VideosListing } from "../../components/videos-listing/VideosListing";
 
-const VideoListing = () => {
+const Videos = () => {
   return (
     <div>
       <div className="left">
@@ -17,4 +17,4 @@ const VideoListing = () => {
   );
 };
 
-export { VideoListing };
+export { Videos };

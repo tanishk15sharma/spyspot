@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 const Sidebar = () => {
   return (
@@ -23,10 +24,12 @@ const Sidebar = () => {
           <i className="fa-solid fa-clock-rotate-left side-icon"></i>
           <p>History</p>
         </div>
-        <div className="side-icon-div">
-          <i className="fa-solid fa-bookmark side-icon"></i>
-          <p>Watch Later</p>
-        </div>
+        <Link to="/watchlater">
+          <div className="side-icon-div">
+            <i className="fa-solid fa-bookmark side-icon"></i>
+            <p>Watch Later</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

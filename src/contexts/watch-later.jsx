@@ -6,7 +6,6 @@ const WatchLaterContext = createContext();
 const WatchLaterProvider = ({ children }) => {
   const [watchLater, setWatchLater] = useState([]);
   const token = localStorage.getItem("token");
-  console.log(token);
   useEffect(() => {
     (async () => {
       try {

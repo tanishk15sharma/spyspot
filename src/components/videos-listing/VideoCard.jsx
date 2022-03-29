@@ -33,7 +33,7 @@ const VideoCard = ({ video }) => {
           Like Video
         </div>
       </div>
-      <div className=" video-type">{video.category}</div>
+      <div className="video-type">{video.category}</div>
     </div>
   );
 };
