@@ -1,13 +1,10 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useFilters } from "../../contexts/filters";
-import { getFilteredVideos } from "../../utilities/filters-utils";
 import { SuggestionChips } from "./SuggestionChips";
 import { VideoCard } from "./VideoCard";
 import "./VideosListing.css";
 const VideosListing = () => {
   const [videosData, setVideosData] = useState([]);
-  const { filterState } = useFilters();
 
   useEffect(() => {
     (async () => {
@@ -19,13 +16,12 @@ const VideosListing = () => {
       }
     })();
   }, []);
-  const filteredVideos = getFilteredVideos(videosData, filterState.category);
-  console.log(filteredVideos);
+  console.log(videosData);
   return (
     <div className="hero-div">
       <SuggestionChips />
       <div className="videos-wrapper">
-        {filteredVideos.map((video) => (
+        {videosData.map((video) => (
           <VideoCard video={video} key={video._id} />
         ))}
       </div>

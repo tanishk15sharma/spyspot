@@ -57,6 +57,6 @@ export const videos = [
     title: "NBA Crossovers and Ankle Breakers of 2022 MOMENTS",
     description:
       "NBA video clips used in this video are licensed through partnership with NBA Playmakers.Music provided by Epidemic SoundThis video features players like Lonzo Ball, Chris Paul, DeMar Derozan, Anthony Davis, Ja Morant and Stephen Curry",
-    category: "Ankle Breaker",
+    category: "Cross over",
   },
 ];

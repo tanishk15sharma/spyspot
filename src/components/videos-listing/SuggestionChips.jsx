@@ -1,35 +1,14 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useFilters } from "../../contexts/filters";
+import React from "react";
 import "./SuggestionChips.css";
 const SuggestionChips = () => {
-  const { filterDispatch } = useFilters();
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/categories");
-        setCategories(data.categories);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-
   return (
     <div className="chips-div">
-      {categories.map(({ categoryName, _id }) => (
-        <button
-          className="btn btn-round"
-          key={_id}
-          onClick={() =>
-            filterDispatch({ type: "CATEGORY", payload: categoryName })
-          }
-        >
-          {categoryName}
-        </button>
-      ))}
+      <button className="btn btn-round">All</button>
+      <button className="btn btn-round">Fundementals</button>
+      <button className="btn btn-round">3pointes</button>
+      <button className="btn btn-round">Dunk</button>
+      <button className="btn btn-round">Ankle Breakers</button>
+      <button className="btn btn-round">10 Best highlights</button>
     </div>
   );
 };
