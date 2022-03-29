@@ -20,7 +20,7 @@ const LikeContextProvider = ({ children }) => {
       }
     })();
   }, []);
-  console.log(like);
+
   return (
     <LikeContext.Provider value={{ like, setLike }}>
       {children}

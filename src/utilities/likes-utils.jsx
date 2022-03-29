@@ -23,4 +23,17 @@ const likeVideo = async (video, setLike, like) => {
     }
   }
 };
-export { likeVideo };
+
+const dislikeVideo = async (id, setLike) => {
+  const token = localStorage.getItem("token");
+
+  try {
+    const { data } = await axios.delete(`/api/user/likes/${id}`, {
+      headers: { authorization: token },
+    });
+    setLike(data.likes);
+  } catch (err) {
+    console.log(err);
+  }
+};
+export { likeVideo, dislikeVideo };
