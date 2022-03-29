@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import img from "../../../src/components/hq720.webp";
+import { Link } from "react-router-dom";
 import "./VideoCard.css";
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
   return (
     <div className="video-card relative">
-      <div className="video-img-div">
-        <img
-          src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
-          className="video-thumbnail"
-        />
-      </div>
+      <Link to="/player">
+        <div className="video-img-div">
+          <img
+            src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
+            className="video-thumbnail"
+          />
+        </div>
+      </Link>
       <div className="pd-sm flex-sb">
         <div className="video-title">{video.title}</div>
         <i
