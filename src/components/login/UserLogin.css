@@ -20,6 +20,9 @@
   border: 1px solid var(--action-color);
   color: var(--primary-color);
 }
+.bg-input:focus {
+  outline: none;
+}
 .user-btn {
   padding: 0.8rem;
   /* border: 1px solid var(--action-color); */
