@@ -2,11 +2,9 @@ import "./UserLogin.css";
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth";
-import { useNavigate } from "react-router-dom";
 import { validLogin } from "../../utilities/auth-utils";
 
 const UserLogin = (displayVal) => {
-  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -33,7 +31,6 @@ const UserLogin = (displayVal) => {
       console.log(data);
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
-      //   navigate(-1);
     } catch (err) {
       console.log(err);
     }
@@ -50,6 +47,13 @@ const UserLogin = (displayVal) => {
     postLoginDetails(loginData.email, loginData.password);
   };
   console.log(loginErrors);
+
+  const testHandler = () => {
+    setLoginData({
+      email: "adarshbalika@gmail.com",
+      password: "adarshBalika123",
+    });
+  };
   return (
     <form
       style={{ display: !displayVal.displayVal && "none" }}
@@ -86,7 +90,9 @@ const UserLogin = (displayVal) => {
         <button className="user-btn">Login</button>
         <div>
           <span className="secondary-txt">CREATE NEW ACCOUNT</span>
-          <button className="btn-sm">TEST LOGIN</button>
+          <button className="btn-sm" onClick={testHandler}>
+            TEST LOGIN
+          </button>
         </div>
       </div>
     </form>
