@@ -39,7 +39,7 @@ export const videos = [
     category: "3 Pointer",
   },
   {
-    _id: "GqJFT8TK58o",
+    _id: "_f8r12JSHGY",
     title: "How to: Get Your First Dunk (How to Dunk a Basketball",
     description:
       "In this video we'll go through some helpful and ESSENTIAL tips to implement when learning to Dunk a Basketball!  These tips will help speed up the process of Dunking a Basketball once your Vertical Jump is strong!",
@@ -57,6 +57,6 @@ export const videos = [
     title: "NBA Crossovers and Ankle Breakers of 2022 MOMENTS",
     description:
       "NBA video clips used in this video are licensed through partnership with NBA Playmakers.Music provided by Epidemic SoundThis video features players like Lonzo Ball, Chris Paul, DeMar Derozan, Anthony Davis, Ja Morant and Stephen Curry",
-    category: "Cross Overs",
+    category: "Cross over",
   },
 ];
