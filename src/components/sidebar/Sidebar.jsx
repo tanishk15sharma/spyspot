@@ -16,10 +16,12 @@ const Sidebar = () => {
           <i className="fa-solid fa-folder-plus side-icon"></i>
           <p>Playlist</p>
         </div>
-        <div className="side-icon-div">
-          <i className="fa-solid fa-thumbs-up side-icon"></i>
-          <p>Likes</p>
-        </div>
+        <Link to="/likes">
+          <div className="side-icon-div">
+            <i className="fa-solid fa-thumbs-up side-icon"></i>
+            <p>Likes</p>
+          </div>
+        </Link>
         <div className="side-icon-div">
           <i className="fa-solid fa-clock-rotate-left side-icon"></i>
           <p>History</p>

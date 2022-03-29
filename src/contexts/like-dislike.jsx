@@ -4,23 +4,23 @@ import { createContext, useContext, useEffect, useState } from "react";
 const LikeContext = createContext();
 
 const LikeContextProvider = ({ children }) => {
+  const [like, setLike] = useState([]);
   const token = localStorage.getItem("token");
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/api/user/likes", {
+        const { data } = await axios.get("/api/user/likes", {
           headers: {
             authorization: token,
           },
         });
-        console.log(res);
+        setLike(data.likes);
       } catch (err) {
         console.log(err);
       }
     })();
   }, []);
-
-  const [like, setLike] = useState([]);
+  console.log(like);
   return (
     <LikeContext.Provider value={{ like, setLike }}>
       {children}
