@@ -18,4 +18,17 @@ const addToWatchLater = async (video, setWatchLater, watchLater) => {
   }
 };
 
-export { addToWatchLater };
+const removeFromWatchLater = async (id, setWatchLater, watchLater) => {
+  const token = localStorage.getItem("token");
+
+  try {
+    const { data } = await axios.delete(`/api/user/watchLater/${id}`, {
+      headers: { authorization: token },
+    });
+    setWatchLater(data.watchLater);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { addToWatchLater, removeFromWatchLater };

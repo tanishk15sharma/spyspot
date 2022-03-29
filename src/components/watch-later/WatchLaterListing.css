@@ -25,6 +25,10 @@
 .fa-trash-can {
   font-size: 1.6rem;
   color: gray;
+  cursor: pointer;
+}
+.fa-trash-can:hover {
+  color: var(--primary-color);
 }
 .video-desp {
   margin-top: 1.4rem;
