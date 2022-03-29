@@ -1,0 +1,29 @@
+.video-card {
+  width: 96%;
+  margin-bottom: 2rem;
+}
+.video-img-div {
+  width: 100%;
+  border-radius: 20%;
+}
+.video-details {
+  padding: 0.5rem 0.2rem;
+}
+.video-type {
+  color: var(--secondary-text);
+}
+.pd-sm {
+  padding: 0.5rem 0.2rem;
+}
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+.fa-ellipsis-vertical {
+  cursor: pointer;
+
+  font-size: 1.2rem;
+}
+.video-thumbnail {
+  border-radius: 4px;
+}

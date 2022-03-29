@@ -5,7 +5,7 @@ const Nav = () => {
     <nav>
       <div className="logo">
         SPY
-        <i class="fa-brands fa-reddit"></i>SPOT
+        <i className="fa-brands fa-reddit"></i>SPOT
       </div>
       <div className="search-div">
         <input className="search" placeholder="search" />
@@ -16,7 +16,7 @@ const Nav = () => {
       </div>
       <button className="btn">
         LOGIN
-        <i class="fa-solid fa-circle-user"></i>
+        <i className="fa-solid fa-circle-user"></i>
       </button>
     </nav>
   );
