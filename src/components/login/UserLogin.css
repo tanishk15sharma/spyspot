@@ -52,3 +52,12 @@
 .btn-sm:hover {
   color: var(--primary-color);
 }
+.err-msg {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: var(--error-color);
+}
+.fa-circle-exclamation {
+  color: var(--error-color);
+  margin-right: 0.3rem;
+}

@@ -1,8 +1,12 @@
 import "./UserLogin.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { useAuth } from "../../contexts/auth";
+import { useNavigate } from "react-router-dom";
+import { validLogin } from "../../utilities/auth-utils";
 
 const UserLogin = (displayVal) => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -11,6 +15,7 @@ const UserLogin = (displayVal) => {
     email: "",
     password: "",
   });
+  const { authState, authDispatch } = useAuth();
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -22,18 +27,29 @@ const UserLogin = (displayVal) => {
 
   const postLoginDetails = async (email, password) => {
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
-      console.log(response);
+      authDispatch({ type: "USER_LOAD" });
+
+      const { data } = await axios.post("/api/auth/login", { email, password });
+      console.log(data);
+      authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
+      localStorage.setItem("token", data.encodedToken);
+      //   navigate(-1);
     } catch (err) {
       console.log(err);
     }
   };
-
+  console.log(authState);
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { isValid, errors } = validLogin(loginData, loginErrors);
+    if (!isValid) {
+      setLoginErrors(errors);
+      return;
+    }
+
     postLoginDetails(loginData.email, loginData.password);
   };
-
+  console.log(loginErrors);
   return (
     <form
       style={{ display: !displayVal.displayVal && "none" }}
@@ -48,6 +64,12 @@ const UserLogin = (displayVal) => {
           value={loginData.email}
           onChange={inputHandler}
         />
+        {loginErrors.email && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {loginErrors.email}
+          </span>
+        )}
         <input
           className="bg-input"
           placeholder="PASSWORD"
@@ -55,6 +77,12 @@ const UserLogin = (displayVal) => {
           value={loginData.password}
           onChange={inputHandler}
         />
+        {loginErrors.password && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {loginErrors.password}
+          </span>
+        )}
         <button className="user-btn">Login</button>
         <div>
           <span className="secondary-txt">CREATE NEW ACCOUNT</span>
