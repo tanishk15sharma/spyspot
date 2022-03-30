@@ -1,10 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useReducer,
-} from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { getLikesArr } from "../utilities/likes-utils";
 import { getWatchLaterArr } from "../utilities/watchlater-utils";
 
 const UserVideosContext = createContext();
@@ -17,6 +12,12 @@ const userVideosReducer = (state, action) => {
       return { ...state, watchLater: action.payload };
     case "REMOVE_FROM_WATCHLATER":
       return { ...state, watchLater: action.payload };
+    case "SET_LIKES":
+      return { ...state, likes: action.payload };
+    case "ADD_TO_LIKES":
+      return { ...state, likes: action.payload };
+    case "REMOVE_FROM_LIKES":
+      return { ...state, likes: action.payload };
     default:
       return state;
   }
@@ -27,6 +28,8 @@ const UserVideosProvider = ({ children }) => {
     (async () => {
       const wishlist = await getWatchLaterArr();
       dispatch({ type: "SET_WATCHLATER", payload: wishlist });
+      const likes = await getLikesArr();
+      dispatch({ type: "SET_LIKES", payload: likes });
     })();
   }, []);
 

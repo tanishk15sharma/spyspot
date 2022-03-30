@@ -1,39 +1,45 @@
 import axios from "axios";
+import { getToken } from "./helper-utils";
 
-const likeVideo = async (video, setLike, like) => {
-  const token = localStorage.getItem("token");
-  {
-    if (like.find((item) => item._id === video._id)) {
-      alert("this is liked already !!!");
-      return;
-    }
-    try {
-      const { data } = await axios.post(
-        "/api/user/likes",
-        { video },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      setLike(data.likes);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-};
-
-const dislikeVideo = async (id, setLike) => {
-  const token = localStorage.getItem("token");
-
+const getLikesArr = async () => {
   try {
-    const { data } = await axios.delete(`/api/user/likes/${id}`, {
-      headers: { authorization: token },
+    const { data } = await axios.get("/api/user/likes", {
+      headers: {
+        authorization: getToken(),
+      },
     });
-    setLike(data.likes);
+    return data.likes;
   } catch (err) {
     console.log(err);
   }
 };
-export { likeVideo, dislikeVideo };
+
+const likeVideo = async (video, dispatch) => {
+  try {
+    const { data } = await axios.post(
+      "/api/user/likes",
+      { video },
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+    dispatch({ type: "ADD_TO_LIKES", payload: data.likes });
+  } catch (err) {
+    console.log(err);
+    alert(err.response.data.errors);
+  }
+};
+
+const dislikeVideo = async (id, dispatch) => {
+  try {
+    const { data } = await axios.delete(`/api/user/likes/${id}`, {
+      headers: { authorization: getToken() },
+    });
+    dispatch({ type: "REMOVE_FROM_LIKES", payload: data.likes });
+  } catch (err) {
+    console.log(err);
+  }
+};
+export { getLikesArr, likeVideo, dislikeVideo };
