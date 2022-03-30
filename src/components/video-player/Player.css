@@ -1,0 +1,28 @@
+.player-container {
+  padding: 3rem 4rem;
+}
+.player {
+  width: 80%;
+}
+.player-details {
+  padding: 1rem 0.8rem;
+}
+
+.player-options {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.player-nav {
+  margin-left: 1rem;
+  color: gray;
+  cursor: pointer;
+}
+.player-nav:hover {
+  color: var(--primary-color);
+}
+.player-icon {
+  margin-right: 0.4rem;
+  font-size: 0.8rem;
+}
