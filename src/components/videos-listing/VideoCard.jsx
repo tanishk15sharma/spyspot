@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useWatchLater } from "../../contexts/watch-later";
 import { addToWatchLater } from "../../utilities/watchlater-utils";
 import "./VideoCard.css";
 import { useLike } from "../../contexts/like-dislike";
 import { likeVideo } from "../../utilities/likes-utils";
+import { useUserVideos } from "../../contexts/user-videos";
 
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
-  const { watchLater, setWatchLater } = useWatchLater();
   const { like, setLike } = useLike();
-
+  const { state, dispatch } = useUserVideos();
   return (
     <div className="video-card relative">
       <Link to="/player">
@@ -34,7 +33,7 @@ const VideoCard = ({ video }) => {
       >
         <div
           className="option"
-          onClick={() => addToWatchLater(video, setWatchLater, watchLater)}
+          onClick={() => addToWatchLater(video, watchLater, dispatch)}
         >
           <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
           Save to Watch Later

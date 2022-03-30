@@ -15,7 +15,7 @@ const getWatchLaterArr = async () => {
   }
 };
 
-const addToWatchLater = async (video, setWatchLater, watchLater) => {
+const addToWatchLater = async (video, watchLater, dispatch) => {
   if (watchLater.find((item) => item._id === video._id)) {
     alert("item is already on wishlist");
     return;
@@ -26,7 +26,8 @@ const addToWatchLater = async (video, setWatchLater, watchLater) => {
       { video },
       { headers: { authorization: getToken() } }
     );
-    setWatchLater(data.watchLater);
+
+    dispatch({ type: "ADD_TO_WATCHLATER", payload: data.watchLater });
   } catch (err) {
     console.log(err);
   }
