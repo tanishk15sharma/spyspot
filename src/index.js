@@ -5,8 +5,6 @@ import App from "./App";
 import { makeServer } from "./server";
 import { FilterContextProvider } from "./contexts/filters";
 import { AuthContextProvider } from "./contexts/auth";
-import { WatchLaterProvider } from "./contexts/watch-later";
-import { LikeContextProvider } from "./contexts/like-dislike";
 import { UserVideosProvider } from "./contexts/user-videos";
 
 // Call make Server
