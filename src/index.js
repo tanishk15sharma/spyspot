@@ -16,13 +16,9 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
       <FilterContextProvider>
-        <WatchLaterProvider>
-          <LikeContextProvider>
-            <UserVideosProvider>
-              <App />
-            </UserVideosProvider>
-          </LikeContextProvider>
-        </WatchLaterProvider>
+        <UserVideosProvider>
+          <App />
+        </UserVideosProvider>
       </FilterContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
