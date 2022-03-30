@@ -4,7 +4,6 @@ import { removeFromWatchLater } from "../../utilities/watchlater-utils";
 import "./WatchLaterListing.css";
 const WatchLaterListing = () => {
   const { watchLater, setWatchLater } = useWatchLater();
-  console.log(watchLater);
 
   return (
     <>

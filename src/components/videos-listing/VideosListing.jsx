@@ -20,7 +20,7 @@ const VideosListing = () => {
     })();
   }, []);
   const filteredVideos = getFilteredVideos(videosData, filterState.category);
-  console.log(filteredVideos);
+
   return (
     <div className="hero-div">
       <SuggestionChips />

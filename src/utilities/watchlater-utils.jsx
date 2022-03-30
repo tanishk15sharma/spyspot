@@ -18,7 +18,7 @@ const addToWatchLater = async (video, setWatchLater, watchLater) => {
   }
 };
 
-const removeFromWatchLater = async (id, setWatchLater, watchLater) => {
+const removeFromWatchLater = async (id, setWatchLater) => {
   const token = localStorage.getItem("token");
 
   try {
