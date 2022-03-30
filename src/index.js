@@ -7,6 +7,7 @@ import { FilterContextProvider } from "./contexts/filters";
 import { AuthContextProvider } from "./contexts/auth";
 import { WatchLaterProvider } from "./contexts/watch-later";
 import { LikeContextProvider } from "./contexts/like-dislike";
+import { UserVideosProvider } from "./contexts/user-videos";
 
 // Call make Server
 makeServer();
@@ -17,7 +18,9 @@ ReactDOM.render(
       <FilterContextProvider>
         <WatchLaterProvider>
           <LikeContextProvider>
-            <App />
+            <UserVideosProvider>
+              <App />
+            </UserVideosProvider>
           </LikeContextProvider>
         </WatchLaterProvider>
       </FilterContextProvider>
