@@ -5,6 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { FilterContextProvider } from "./contexts/filters";
 import { AuthContextProvider } from "./contexts/auth";
+import { WatchLaterProvider } from "./contexts/watch-later";
 
 // Call make Server
 makeServer();
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
       <FilterContextProvider>
-        <App />
+        <WatchLaterProvider>
+          <App />
+        </WatchLaterProvider>
       </FilterContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,

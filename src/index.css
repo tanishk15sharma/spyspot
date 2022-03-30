@@ -27,6 +27,7 @@ html {
   /* font-size: 50%; */
   font-family: "Roboto", sans-serif;
   color: var(--primary-color);
+  background-color: var(--background-primary-color);
 }
 
 img {

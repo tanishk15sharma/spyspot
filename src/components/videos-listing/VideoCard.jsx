@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useWatchLater } from "../../contexts/watch-later";
+import { addToWatchLater } from "../../utilities/watchlater-utils";
 import "./VideoCard.css";
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
+  const { watchLater, setWatchLater } = useWatchLater();
+
   return (
     <div className="video-card relative">
       <Link to="/player">
@@ -24,7 +28,10 @@ const VideoCard = ({ video }) => {
         className="video-options"
         style={{ display: !toggleOptions && "none" }}
       >
-        <div className="option">
+        <div
+          className="option"
+          onClick={() => addToWatchLater(video, setWatchLater, watchLater)}
+        >
           <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
           Save to Watch Later
         </div>
@@ -33,7 +40,7 @@ const VideoCard = ({ video }) => {
           Like Video
         </div>
       </div>
-      <div className=" video-type">{video.category}</div>
+      <div className="video-type">{video.category}</div>
     </div>
   );
 };
