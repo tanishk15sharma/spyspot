@@ -1,13 +1,13 @@
 import React from "react";
-import { useLike } from "../../contexts/like-dislike";
+import { useUserVideos } from "../../contexts/user-videos";
 import { dislikeVideo } from "../../utilities/likes-utils";
 import "./LikeListing.css";
 const LikeListing = () => {
-  const { like, setLike } = useLike();
-
+  const { state, dispatch } = useUserVideos();
+  console.log(state.likes);
   return (
     <div className="like-wrapper">
-      {like.map((video) => (
+      {state.likes.map((video) => (
         <div className="like-card" key={video._id}>
           <div className="like-img-div">
             <img
@@ -21,7 +21,7 @@ const LikeListing = () => {
             <div className="like-icons">
               <i className="fa-solid fa-thumbs-up like-icon"></i>
               <i
-                onClick={() => dislikeVideo(video._id, setLike)}
+                onClick={() => dislikeVideo(video._id, dispatch)}
                 className="fa-regular fa-thumbs-down like-icon"
               ></i>
             </div>

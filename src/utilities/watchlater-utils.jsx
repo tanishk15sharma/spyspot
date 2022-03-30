@@ -1,34 +1,43 @@
 import axios from "axios";
+import { getToken } from "./helper-utils";
 
-const addToWatchLater = async (video, setWatchLater, watchLater) => {
-  const token = localStorage.getItem("token");
-  if (watchLater.find((item) => item._id === video._id)) {
-    alert("item is already on wishlist");
-    return;
+const getWatchLaterArr = async () => {
+  try {
+    const { data } = await axios.get("/api/user/watchLater", {
+      headers: {
+        authorization: getToken(),
+      },
+    });
+    return data.watchLater;
+  } catch (err) {
+    console.log(err);
   }
+};
+
+const addToWatchLater = async (video, dispatch) => {
   try {
     const { data } = await axios.post(
       "/api/user/watchLater",
       { video },
-      { headers: { authorization: token } }
+      { headers: { authorization: getToken() } }
     );
-    setWatchLater(data.watchLater);
+
+    dispatch({ type: "ADD_TO_WATCHLATER", payload: data.watchLater });
   } catch (err) {
     console.log(err);
+    alert(err.response.data.errors);
   }
 };
 
-const removeFromWatchLater = async (id, setWatchLater) => {
-  const token = localStorage.getItem("token");
-
+const removeFromWatchLater = async (id, dispatch) => {
   try {
     const { data } = await axios.delete(`/api/user/watchLater/${id}`, {
-      headers: { authorization: token },
+      headers: { authorization: getToken() },
     });
-    setWatchLater(data.watchLater);
+    dispatch({ type: "REMOVE_FROM_WATCHLATER", payload: data.watchLater });
   } catch (err) {
     console.log(err);
   }
 };
 
-export { addToWatchLater, removeFromWatchLater };
+export { getWatchLaterArr, addToWatchLater, removeFromWatchLater };

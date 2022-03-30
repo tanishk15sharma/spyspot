@@ -1,13 +1,13 @@
 import React from "react";
-import { useWatchLater } from "../../contexts/watch-later";
+import { useUserVideos } from "../../contexts/user-videos";
 import { removeFromWatchLater } from "../../utilities/watchlater-utils";
 import "./WatchLaterListing.css";
 const WatchLaterListing = () => {
-  const { watchLater, setWatchLater } = useWatchLater();
+  const { state, dispatch } = useUserVideos();
 
   return (
     <>
-      {watchLater.map((video) => (
+      {state.watchLater.map((video) => (
         <div className="horiz-card" key={video._id}>
           <div className="sm-img-div">
             <img
@@ -19,11 +19,7 @@ const WatchLaterListing = () => {
             <div className="flex-space-btw">
               <span className="txt-xxl">{video.title}</span>
               <div>
-                <p
-                  onClick={() =>
-                    removeFromWatchLater(video._id, setWatchLater, watchLater)
-                  }
-                >
+                <p onClick={() => removeFromWatchLater(video._id, dispatch)}>
                   <i className="fa-regular fa-trash-can"></i>
                 </p>
               </div>

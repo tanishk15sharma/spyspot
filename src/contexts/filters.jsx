@@ -13,7 +13,7 @@ const filterReducer = (state, action) => {
 const initialState = {
   category: "All",
 };
-console.log(initialState);
+
 const FilterContextProvider = ({ children }) => {
   const [filterState, filterDispatch] = useReducer(filterReducer, initialState);
   return (
