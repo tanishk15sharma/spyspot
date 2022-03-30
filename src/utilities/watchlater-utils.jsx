@@ -8,18 +8,13 @@ const getWatchLaterArr = async () => {
         authorization: getToken(),
       },
     });
-    console.log(data);
     return data.watchLater;
   } catch (err) {
     console.log(err);
   }
 };
 
-const addToWatchLater = async (video, watchLater, dispatch) => {
-  if (watchLater.find((item) => item._id === video._id)) {
-    alert("item is already on wishlist");
-    return;
-  }
+const addToWatchLater = async (video, dispatch) => {
   try {
     const { data } = await axios.post(
       "/api/user/watchLater",
@@ -30,15 +25,16 @@ const addToWatchLater = async (video, watchLater, dispatch) => {
     dispatch({ type: "ADD_TO_WATCHLATER", payload: data.watchLater });
   } catch (err) {
     console.log(err);
+    alert(err.response.data.errors);
   }
 };
 
-const removeFromWatchLater = async (id, setWatchLater) => {
+const removeFromWatchLater = async (id, dispatch) => {
   try {
     const { data } = await axios.delete(`/api/user/watchLater/${id}`, {
       headers: { authorization: getToken() },
     });
-    setWatchLater(data.watchLater);
+    dispatch({ type: "REMOVE_FROM_WATCHLATER", payload: data.watchLater });
   } catch (err) {
     console.log(err);
   }

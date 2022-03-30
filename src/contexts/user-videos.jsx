@@ -15,6 +15,8 @@ const userVideosReducer = (state, action) => {
       return { ...state, watchLater: action.payload };
     case "ADD_TO_WATCHLATER":
       return { ...state, watchLater: action.payload };
+    case "REMOVE_FROM_WATCHLATER":
+      return { ...state, watchLater: action.payload };
     default:
       return state;
   }

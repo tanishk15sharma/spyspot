@@ -9,7 +9,7 @@ import { useUserVideos } from "../../contexts/user-videos";
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
   const { like, setLike } = useLike();
-  const { state, dispatch } = useUserVideos();
+  const { dispatch } = useUserVideos();
   return (
     <div className="video-card relative">
       <Link to="/player">
@@ -33,7 +33,7 @@ const VideoCard = ({ video }) => {
       >
         <div
           className="option"
-          onClick={() => addToWatchLater(video, watchLater, dispatch)}
+          onClick={() => addToWatchLater(video, dispatch)}
         >
           <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
           Save to Watch Later
