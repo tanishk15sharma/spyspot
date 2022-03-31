@@ -16,8 +16,6 @@ const Playlists = () => {
           <PlaylistListing />
         </div>
       </div>
-      Playlists page hai bhai jaldhi karo job nhi chiae ky ? garrab hi rehna hai
-      kya?
     </div>
   );
 };

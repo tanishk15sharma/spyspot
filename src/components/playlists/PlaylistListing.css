@@ -1,0 +1,30 @@
+.playlists-wrapper {
+  border: 1px solid red;
+  padding: 2rem 4rem;
+}
+.playlist-box {
+  background-color: var(--background-secondary-color);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.playlist-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.fa-caret-down {
+  font-size: 2rem;
+  color: gray;
+}
+
+.playlist-videos-box {
+  border: 1px solid red;
+  display: none;
+  transform: translateY(-70%);
+  transition: all 0.8s;
+}
+.show-box {
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+}
