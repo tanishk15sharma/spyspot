@@ -16,15 +16,19 @@
 .fa-caret-down {
   font-size: 2rem;
   color: gray;
+  transition: all 0.3s;
 }
 
 .playlist-videos-box {
   border: 1px solid red;
   display: none;
   transform: translateY(-70%);
-  transition: all 0.8s;
+  transition: all 1s;
 }
 .show-box {
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
+}
+.rotate-up {
+  transform: rotate(180deg);
 }

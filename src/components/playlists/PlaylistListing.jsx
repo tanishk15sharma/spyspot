@@ -10,10 +10,20 @@ const PlaylistListing = () => {
   };
   return (
     <div className="playlists-wrapper">
+      <button className="btn">
+        <i class="fa-regular fa-square-plus"></i>
+        CREATE PLAYLIST
+      </button>
       <div className="playlist-container">
         <div className="playlist-box" onClick={() => setToggleBox(!toggleBox)}>
           <h1>DUNKS</h1>
-          <i className="fa-solid fa-caret-down"></i>
+          <i
+            className={
+              toggleBox
+                ? "fa-solid fa-caret-down rotate-up"
+                : "fa-solid fa-caret-down"
+            }
+          ></i>
         </div>
         <div className={toggleBox ? "show-box" : "playlist-videos-box"}>
           <div>
