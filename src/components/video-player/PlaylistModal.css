@@ -1,0 +1,18 @@
+.line {
+  border-bottom: 1px solid gray;
+  margin: 0.5rem;
+}
+.light-name {
+  color: gray;
+}
+
+.margin-rt {
+  margin-right: 0.5rem;
+}
+.fa-trash {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+.fa-trash:hover {
+  opacity: 0.8;
+}

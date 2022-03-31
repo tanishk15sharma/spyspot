@@ -4,6 +4,7 @@ import { useUserVideos } from "../../contexts/user-videos";
 import { likeVideo } from "../../utilities/likes-utils";
 import { addToWatchLater } from "../../utilities/watchlater-utils";
 import "./Player.css";
+import { PlaylistModal } from "./PlaylistModal";
 
 const Player = () => {
   const { videoId } = useParams();
@@ -28,12 +29,14 @@ const Player = () => {
 
         <div className="player-details">
           <div className="player-options">
+            <PlaylistModal />
             <div className="txt-xxl">{video.title}</div>
             <div>
               <span className="player-nav">
                 <i className="fa-solid fa-plus player-icon"></i>
                 Add to playlist
               </span>
+
               <span
                 className="player-nav"
                 onClick={() => likeVideo(video, dispatch)}

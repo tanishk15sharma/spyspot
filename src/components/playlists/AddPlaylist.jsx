@@ -3,7 +3,7 @@ import { useUserVideos } from "../../contexts/user-videos";
 import { createPlaylist } from "../../utilities/playlist-utils";
 import "./AddPlaylist.css";
 const AddPlaylist = () => {
-  const { state, dispatch } = useUserVideos();
+  const { dispatch } = useUserVideos();
   const [playlistName, setPlaylistName] = useState("");
   const clickHandler = () => {
     if (playlistName === "") {
