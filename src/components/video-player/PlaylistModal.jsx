@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos";
-import { deletePlaylist } from "../../utilities/playlist-utils";
-import "./PlaylistModal.css";
+import { createPlaylist, deletePlaylist } from "../../utilities/playlist-utils";
+
+import "./Player.css";
 
 const PlaylistModal = () => {
   const { state } = useUserVideos();
   const [playlistTitle, setPlaylistTitle] = useState("");
+  const { dispatch } = useUserVideos();
+
+  const clickHandler = () => {
+    if (playlistTitle === "") {
+      alert("please write a name of playlist");
+      return;
+    }
+    createPlaylist(playlistTitle, dispatch);
+  };
+
   return (
     <div>
       <div className="ab-center">
@@ -33,7 +44,9 @@ const PlaylistModal = () => {
           onChange={(e) => setPlaylistTitle(e.target.value)}
           placeholder="Playlist name"
         />
-        <button className="btn-input">ADD</button>
+        <button className="btn-input" onClick={() => clickHandler()}>
+          ADD
+        </button>
       </div>
     </div>
   );
