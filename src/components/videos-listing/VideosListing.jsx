@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useFilters } from "../../contexts/filters";
 import { useUserVideos } from "../../contexts/user-videos";
-import { getFilteredVideos } from "../../utilities/filters-utils";
+import { getFilteredVideos } from "../../utilities/allvideos-utils";
 import { SuggestionChips } from "./SuggestionChips";
 import { VideoCard } from "./VideoCard";
 import "./VideosListing.css";
