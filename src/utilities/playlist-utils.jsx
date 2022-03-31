@@ -13,4 +13,18 @@ const getPlaylists = async () => {
     console.log(err);
   }
 };
-export { getPlaylists };
+
+const createPlaylist = async (name) => {
+  try {
+    const res = await axios.post(
+      "/api/user/playlists",
+
+      { playlist: name },
+      { headers: { authorization: getToken() } }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getPlaylists, createPlaylist };
