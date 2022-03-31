@@ -3,7 +3,7 @@ import { UserLogin } from "../login/UserLogin";
 import "./Nav.css";
 const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
-  console.log(toggleLogin);
+
   return (
     <nav>
       <div className="logo">

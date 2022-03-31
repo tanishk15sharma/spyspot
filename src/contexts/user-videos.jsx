@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { getLikesArr } from "../utilities/likes-utils";
 import { getWatchLaterArr } from "../utilities/watchlater-utils";
 import { getAllVideos } from "../utilities/allvideos-utils";
+import { getPlaylists } from "../utilities/playlist-utils.jsx";
 const UserVideosContext = createContext();
 
 const userVideosReducer = (state, action) => {
@@ -20,6 +21,8 @@ const userVideosReducer = (state, action) => {
       return { ...state, likes: action.payload };
     case "SET_VIDEOS":
       return { ...state, allVideos: action.payload };
+    case "SET_PLAYLISTS":
+      return { ...state, playlists: action.payload };
     default:
       return state;
   }
@@ -34,6 +37,8 @@ const UserVideosProvider = ({ children }) => {
       dispatch({ type: "SET_WATCHLATER", payload: wishlist });
       const likes = await getLikesArr();
       dispatch({ type: "SET_LIKES", payload: likes });
+      const playlists = await getPlaylists();
+      dispatch({ type: "SET_PLAYLISTS", payload: playlists });
     })();
   }, []);
 
@@ -41,6 +46,7 @@ const UserVideosProvider = ({ children }) => {
     watchLater: [],
     likes: [],
     allVideos: [],
+    playlists: [],
   });
 
   return (
