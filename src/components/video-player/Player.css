@@ -26,3 +26,42 @@
   margin-right: 0.4rem;
   font-size: 0.8rem;
 }
+
+/* loader */
+
+.loader-hourglass {
+  display: inline-block;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  /* border: 1px solid red; */
+  left: 50%;
+  right: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+.loader-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 52px solid;
+  border-color: #9c7178 transparent gray transparent;
+  animation: loader-hourglass 1.6s infinite;
+}
+@keyframes loader-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(300deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(900deg);
+  }
+}

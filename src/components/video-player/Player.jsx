@@ -9,11 +9,10 @@ const Player = () => {
 
   const video = state.allVideos.find((item) => item._id === videoId);
   if (!video) {
-    return <h1>loading...........!!!!</h1>;
+    return <div class="loader-hourglass"></div>;
   }
   return (
     <div className="player-container">
-      <div class="lds-hourglass"></div>
       <div className="player">
         <iframe
           width="100%"
