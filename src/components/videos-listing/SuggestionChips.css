@@ -2,6 +2,7 @@
   padding: 0.8rem 2rem;
   background: var(--background-secondary-color);
   border-top: 1px solid var(--background-light-color);
+  /* display: none; */
 }
 .btn-round {
   border-radius: 2rem;

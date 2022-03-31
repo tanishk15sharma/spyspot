@@ -1,25 +1,19 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useFilters } from "../../contexts/filters";
-import { getFilteredVideos } from "../../utilities/filters-utils";
+import { useUserVideos } from "../../contexts/user-videos";
+import { getFilteredVideos } from "../../utilities/allvideos-utils";
 import { SuggestionChips } from "./SuggestionChips";
 import { VideoCard } from "./VideoCard";
 import "./VideosListing.css";
 const VideosListing = () => {
-  const [videosData, setVideosData] = useState([]);
   const { filterState } = useFilters();
+  const { state } = useUserVideos();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/videos");
-        setVideosData(data.videos);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-  const filteredVideos = getFilteredVideos(videosData, filterState.category);
+  const filteredVideos = getFilteredVideos(
+    state.allVideos,
+    filterState.category
+  );
 
   return (
     <div className="hero-div">

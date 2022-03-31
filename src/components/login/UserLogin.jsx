@@ -46,7 +46,6 @@ const UserLogin = (displayVal) => {
 
     postLoginDetails(loginData.email, loginData.password);
   };
-  console.log(loginErrors);
 
   const testHandler = () => {
     setLoginData({

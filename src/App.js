@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Videos, WatchLater, Like } from "./pages";
-import { VideoPlayer } from "./components/video-player/VideoPlayer";
+import { Videos, WatchLater, Like, VideoPlayer } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/videos" element={<Videos />} />
-        <Route path="/player" element={<VideoPlayer />} />
+        <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/likes" element={<Like />} />
