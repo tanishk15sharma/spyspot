@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { getLikesArr } from "../utilities/likes-utils";
 import { getWatchLaterArr } from "../utilities/watchlater-utils";
-
+import axios from "axios";
 const UserVideosContext = createContext();
 
 const userVideosReducer = (state, action) => {
@@ -18,6 +18,8 @@ const userVideosReducer = (state, action) => {
       return { ...state, likes: action.payload };
     case "REMOVE_FROM_LIKES":
       return { ...state, likes: action.payload };
+    case "SET_VIDEOS":
+      return { ...state, allVideos: action.payload };
     default:
       return state;
   }
@@ -31,11 +33,22 @@ const UserVideosProvider = ({ children }) => {
       const likes = await getLikesArr();
       dispatch({ type: "SET_LIKES", payload: likes });
     })();
+
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/videos");
+        dispatch({ type: "SET_VIDEOS", payload: data.videos });
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
   }, []);
 
   const [state, dispatch] = useReducer(userVideosReducer, {
     watchLater: [],
     likes: [],
+    allVideos: [],
   });
 
   return (

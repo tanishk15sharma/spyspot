@@ -8,11 +8,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/videos" element={<Videos />} />
-        <Route path="/player" element={<VideoPlayer />} />
+        <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/likes" element={<Like />} />
-        <Route path="/player" element={<VideoPlayer />} />
       </Routes>
     </BrowserRouter>
   );

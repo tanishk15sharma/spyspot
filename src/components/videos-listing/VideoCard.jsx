@@ -11,7 +11,7 @@ const VideoCard = ({ video }) => {
   const { dispatch } = useUserVideos();
   return (
     <div className="video-card relative">
-      <Link to="/player">
+      <Link to={`/videos/${video._id}`}>
         <div className="video-img-div">
           <img
             src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}

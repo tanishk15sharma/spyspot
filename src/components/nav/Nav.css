@@ -5,6 +5,7 @@ nav {
   padding: 1rem;
   align-items: center;
   justify-content: space-between;
+  /* display: none; */
 }
 .logo {
   font-size: 2rem;
