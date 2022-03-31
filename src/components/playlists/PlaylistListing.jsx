@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos.jsx";
+import { deletePlaylist } from "../../utilities/playlist-utils.jsx";
 import { AddPlaylist } from "./AddPlaylist.jsx";
 import "./PlaylistListing.css";
 const PlaylistListing = () => {
-  const { state } = useUserVideos();
+  const { state, dispatch } = useUserVideos();
   const [toggleBox, setToggleBox] = useState(false);
   const [toggleInputBox, setToggleInputBox] = useState(false);
 
@@ -25,17 +26,18 @@ const PlaylistListing = () => {
         </button>
         {toggleInputBox ? <AddPlaylist /> : ""}
         {state.playlists.map((playlist) => (
-          <div className="playlist-box" key={playlist._id}>
-            <div key={video._id}>
-              <div
-                className="playlist-head"
-                onClick={() => setToggleBox(!toggleBox)}
-              >
+          <div
+            className="playlist-box"
+            key={playlist._id}
+            onClick={() => setToggleBox(!toggleBox)}
+          >
+            <div key={playlist._id}>
+              <div className="playlist-head">
                 <h1>{playlist.title}</h1>
                 <div>
                   <i
                     className="fa-regular fa-trash-can"
-                    onClick={() => console.log("hogya")}
+                    onClick={() => deletePlaylist(playlist._id, dispatch)}
                   ></i>
                   <i
                     className={

@@ -27,6 +27,8 @@ const userVideosReducer = (state, action) => {
       return { ...state, playlists: action.payload };
     case "TOGGLE_INPUT_BOX":
       return { ...state, playlists: action.payload };
+    case "DELETE_FROM_PLAYLISTS":
+      return { ...state, playlists: action.payload };
     default:
       return state;
   }
@@ -50,7 +52,6 @@ const UserVideosProvider = ({ children }) => {
     likes: [],
     allVideos: [],
     playlists: [],
-    togglePlaylistInput: false,
   });
   return (
     <UserVideosContext.Provider value={{ state, dispatch }}>

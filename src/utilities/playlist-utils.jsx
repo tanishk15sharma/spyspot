@@ -29,4 +29,15 @@ const createPlaylist = async (name, dispatch) => {
   }
 };
 
-export { getPlaylists, createPlaylist };
+const deletePlaylist = async (id, dispatch) => {
+  try {
+    const { data } = await axios.delete(`/api/user/playlists/${id}`, {
+      headers: { authorization: getToken() },
+    });
+    dispatch({ type: "DELETE_FROM_PLAYLISTS", payload: data.playlists });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getPlaylists, createPlaylist, deletePlaylist };
