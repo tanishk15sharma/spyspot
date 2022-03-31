@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { AddPlaylist } from "./AddPlaylist.jsx";
 import "./PlaylistListing.css";
 const PlaylistListing = () => {
   const [toggleBox, setToggleBox] = useState(false);
@@ -14,6 +14,7 @@ const PlaylistListing = () => {
         <i class="fa-regular fa-square-plus"></i>
         CREATE PLAYLIST
       </button>
+      <AddPlaylist />
       <div className="playlist-container">
         <div className="playlist-box" onClick={() => setToggleBox(!toggleBox)}>
           <h1>DUNKS</h1>
