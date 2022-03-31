@@ -23,11 +23,14 @@ const userVideosReducer = (state, action) => {
       return { ...state, allVideos: action.payload };
     case "SET_PLAYLISTS":
       return { ...state, playlists: action.payload };
+    case "ADD_TO_PLAYLISTS":
+      return { ...state, playlists: action.payload };
+    case "TOGGLE_INPUT_BOX":
+      return { ...state, playlists: action.payload };
     default:
       return state;
   }
 };
-
 const UserVideosProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
@@ -47,8 +50,8 @@ const UserVideosProvider = ({ children }) => {
     likes: [],
     allVideos: [],
     playlists: [],
+    togglePlaylistInput: false,
   });
-
   return (
     <UserVideosContext.Provider value={{ state, dispatch }}>
       {children}

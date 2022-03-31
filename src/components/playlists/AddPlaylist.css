@@ -8,3 +8,6 @@
 .btn-input:hover {
   transform: scale(0.95);
 }
+.hide {
+  display: none;
+}

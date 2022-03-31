@@ -14,14 +14,16 @@ const getPlaylists = async () => {
   }
 };
 
-const createPlaylist = async (name) => {
+const createPlaylist = async (name, dispatch) => {
   try {
-    const res = await axios.post(
+    const { data } = await axios.post(
       "/api/user/playlists",
+      { playlist: { title: name, description: "dummy description" } },
 
-      { playlist: name },
       { headers: { authorization: getToken() } }
     );
+
+    dispatch({ type: "ADD_TO_PLAYLISTS", payload: data.playlists });
   } catch (err) {
     console.log(err);
   }
