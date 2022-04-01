@@ -1,0 +1,14 @@
+.history-container {
+  border: 1px solid red;
+  display: flex;
+  padding: 2rem 5rem;
+  gap: 2rem;
+}
+.history-lists {
+  border: 1px solid blue;
+  width: 100%;
+}
+.history-info {
+  border: 1px solid goldenrod;
+  width: 40%;
+}
