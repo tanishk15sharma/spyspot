@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos.jsx";
-import { deletePlaylist } from "../../utilities/playlist-utils.jsx";
+import {
+  deletePlaylist,
+  setPlaylist,
+} from "../../utilities/playlist-utils.jsx";
 import { AddPlaylist } from "./AddPlaylist.jsx";
+import { PlaylistBox } from "./PlaylistBox.jsx";
 import "./PlaylistListing.css";
 const PlaylistListing = () => {
-  const { state, dispatch } = useUserVideos();
-  const [toggleBox, setToggleBox] = useState(false);
+  const { state } = useUserVideos();
   const [toggleInputBox, setToggleInputBox] = useState(false);
 
-  let video = {
-    title: "aaa",
-    category: "3 pointer",
-    _id: "1212132",
-  };
+  console.log(state.playlists);
 
   return (
     <div>
@@ -25,50 +24,10 @@ const PlaylistListing = () => {
           CREATE PLAYLIST
         </button>
         {toggleInputBox ? <AddPlaylist /> : ""}
-        {state.playlists.map((playlist) => (
-          <div
-            className="playlist-box"
-            key={playlist._id}
-            onClick={() => setToggleBox(!toggleBox)}
-          >
-            <div key={playlist._id}>
-              <div className="playlist-head">
-                <h1>{playlist.title}</h1>
-                <div>
-                  <i
-                    className="fa-regular fa-trash-can"
-                    onClick={() => deletePlaylist(playlist._id, dispatch)}
-                  ></i>
-                  <i
-                    className={
-                      toggleBox
-                        ? "fa-solid fa-caret-down rotate-up"
-                        : "fa-solid fa-caret-down"
-                    }
-                  ></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        <div className={toggleBox ? "show-box" : "playlist-videos-box"}>
-          <div>
-            <div className="like-card" key={video._id}>
-              <div className="like-img-div">
-                <img
-                  src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
-                  className="like-thumbnail"
-                />
-              </div>
-
-              <div className="like-options">
-                <div className="like-title">{video.title}</div>
-                <i className="fa-regular fa-trash-can"></i>
-              </div>
-              <div className="like-type">{video.category}</div>
-            </div>
-          </div>
+        <div>
+          {state.playlists.map((playlist) => (
+            <PlaylistBox playlist={playlist} key={playlist._id} />
+          ))}
         </div>
       </div>
     </div>
