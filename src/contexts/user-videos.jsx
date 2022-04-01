@@ -3,6 +3,7 @@ import { getLikesArr } from "../utilities/likes-utils";
 import { getWatchLaterArr } from "../utilities/watchlater-utils";
 import { getAllVideos } from "../utilities/allvideos-utils";
 import { getPlaylists } from "../utilities/playlist-utils.jsx";
+import { getHistoryArr } from "../utilities/history-utils";
 const UserVideosContext = createContext();
 
 const userVideosReducer = (state, action) => {
@@ -46,6 +47,9 @@ const userVideosReducer = (state, action) => {
           playlist._id === action.payload._id ? action.payload : playlist
         ),
       };
+    case "SET_HISTORY":
+      return { ...state, history: action.payload };
+
     default:
       return state;
   }
@@ -61,21 +65,17 @@ const UserVideosProvider = ({ children }) => {
       dispatch({ type: "SET_LIKES", payload: likes });
       const playlists = await getPlaylists();
       dispatch({ type: "SET_PLAYLISTS", payload: playlists });
+      const history = await getHistoryArr();
+      dispatch({ type: "SET_HISTORY", payload: history });
     })();
   }, []);
-
-  useEffect(() => {
-    (async () => {
-      const playlists = await getPlaylists();
-      console.log(playlists);
-    })();
-  });
 
   const [state, dispatch] = useReducer(userVideosReducer, {
     watchLater: [],
     likes: [],
     allVideos: [],
     playlists: [],
+    history: [],
   });
   console.log(state);
   return (
