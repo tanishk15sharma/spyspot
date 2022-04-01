@@ -27,6 +27,30 @@
   font-size: 0.8rem;
 }
 
+.line {
+  border-bottom: 1px solid gray;
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+}
+.light-name {
+  color: gray;
+}
+.playlist-head {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.margin-rt {
+  margin-right: 0.5rem;
+}
+.fa-trash {
+  font-size: 1rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.fa-trash:hover {
+  opacity: 0.8;
+}
+
 /* loader */
 
 .loader-hourglass {

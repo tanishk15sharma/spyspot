@@ -35,7 +35,6 @@ const UserLogin = (displayVal) => {
       console.log(err);
     }
   };
-  console.log(authState);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { isValid, errors } = validLogin(loginData, loginErrors);

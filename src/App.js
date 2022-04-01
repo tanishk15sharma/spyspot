@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Videos, WatchLater, Like, VideoPlayer } from "./pages";
+import { Videos, WatchLater, Like, VideoPlayer, Playlists } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path="/login" element={<UserLogin />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/likes" element={<Like />} />
+        <Route path="/playlists" element={<Playlists />} />
       </Routes>
     </BrowserRouter>
   );

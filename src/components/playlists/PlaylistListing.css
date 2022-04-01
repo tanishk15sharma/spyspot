@@ -1,0 +1,37 @@
+.playlists-wrapper {
+  border: 1px solid red;
+  padding: 2rem 4rem;
+}
+.playlist-box {
+  background-color: var(--background-secondary-color);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  /* border: 1px solid white; */
+  margin-bottom: 2rem;
+}
+.playlist-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.fa-caret-down {
+  font-size: 2rem;
+  color: gray;
+  transition: all 0.3s;
+  margin-left: 1rem;
+}
+
+.playlist-videos-box {
+  border: 1px solid red;
+  display: none;
+  transform: translateY(-70%);
+  transition: all 1s;
+}
+.show-box {
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+}
+.rotate-up {
+  transform: rotate(180deg);
+}
