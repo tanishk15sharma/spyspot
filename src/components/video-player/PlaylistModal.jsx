@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos";
-import { createPlaylist, deletePlaylist } from "../../utilities/playlist-utils";
+import {
+  addVideoToPlaylist,
+  createPlaylist,
+  deletePlaylist,
+} from "../../utilities/playlist-utils";
 
 import "./Player.css";
 
-const PlaylistModal = () => {
+const PlaylistModal = ({ video }) => {
   const { state } = useUserVideos();
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { dispatch } = useUserVideos();
@@ -25,7 +29,11 @@ const PlaylistModal = () => {
             <div key={playlist._id}>
               <div className="playlist-head">
                 <div className="light-name">
-                  <input type="checkbox" className="margin-rt" />
+                  <input
+                    type="checkbox"
+                    className="margin-rt"
+                    onChange={() => addVideoToPlaylist(playlist._id, video)}
+                  />
                   {playlist.title}
                 </div>
                 <div>

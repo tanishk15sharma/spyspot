@@ -5,18 +5,20 @@ import { deletePlaylist, setPlaylist } from "../../utilities/playlist-utils";
 const PlaylistBox = ({ playlist }) => {
   const [togglePlaylistBox, setTogglePlaylistBox] = useState(false);
   const { dispatch } = useUserVideos();
+  const [videos, setVideos] = useState([]);
   let video = {
     title: "aaa",
     category: "3 pointer",
     _id: "1212132",
   };
+  console.log(videos);
   return (
     <div>
       <div
         className="playlist-box"
         key={playlist._id}
         onClick={() => {
-          setPlaylist(playlist._id);
+          setPlaylist(playlist._id, setVideos);
           setTogglePlaylistBox(!togglePlaylistBox);
         }}
       >

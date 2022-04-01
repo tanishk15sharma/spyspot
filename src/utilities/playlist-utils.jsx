@@ -24,7 +24,7 @@ const createPlaylist = async (name, dispatch) => {
 
       { headers: { authorization: getToken() } }
     );
-
+    console.log(data);
     dispatch({ type: "ADD_TO_PLAYLISTS", payload: data.playlists });
   } catch (err) {
     console.log(err);
@@ -43,16 +43,57 @@ const deletePlaylist = async (id, dispatch) => {
 };
 // playlist
 
-const setPlaylist = async (id) => {
-  console.log(id);
+const setPlaylist = async (id, setVideos) => {
   try {
-    const { data } = await axios.get(`/api/user/playlists/${id}`, {
+    const res = await axios.get(`/api/user/playlists/${id}`, {
       headers: { authorization: getToken() },
     });
-    console.log(data.playlist);
+    console.log(res);
     // dispatch({ type: "SET_PLAYLIST", payload: data.playlist });
+    setVideos(res.data.playlist.videos);
   } catch (err) {
     console.log(err);
   }
 };
-export { getPlaylists, createPlaylist, deletePlaylist, setPlaylist };
+
+const addVideoToPlaylist = async (id, video) => {
+  try {
+    const res = await axios.post(
+      `/api/user/playlists/${id}`,
+      { video },
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const removeVideoFromPlaylist = async (playlistId, videoId) => {
+  try {
+    const res = await axios.delete(
+      `/api/user/playlists/${playlistId}/${videoId}`,
+      {
+        headers: {
+          authorization: getToken(),
+        },
+      }
+    );
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export {
+  getPlaylists,
+  createPlaylist,
+  deletePlaylist,
+  setPlaylist,
+  addVideoToPlaylist,
+  removeVideoFromPlaylist,
+};

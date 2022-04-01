@@ -29,7 +29,7 @@ const Player = () => {
 
         <div className="player-details">
           <div className="player-options">
-            <PlaylistModal />
+            <PlaylistModal video={video} />
             <div className="txt-xxl">{video.title}</div>
             <div>
               <span className="player-nav">

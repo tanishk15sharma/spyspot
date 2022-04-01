@@ -8,27 +8,30 @@ const UserVideosContext = createContext();
 const userVideosReducer = (state, action) => {
   switch (action.type) {
     case "SET_WATCHLATER":
-      return { ...state, watchLater: action.payload };
+    // return { ...state, watchLater: action.payload };
     case "ADD_TO_WATCHLATER":
-      return { ...state, watchLater: action.payload };
+    // return { ...state, watchLater: action.payload };
     case "REMOVE_FROM_WATCHLATER":
       return { ...state, watchLater: action.payload };
     case "SET_LIKES":
-      return { ...state, likes: action.payload };
+    // return { ...state, likes: action.payload };
     case "ADD_TO_LIKES":
-      return { ...state, likes: action.payload };
+    // return { ...state, likes: action.payload };
     case "REMOVE_FROM_LIKES":
       return { ...state, likes: action.payload };
     case "SET_VIDEOS":
       return { ...state, allVideos: action.payload };
     case "SET_PLAYLISTS":
-      return { ...state, playlists: action.payload };
+    // return { ...state, playlists: action.payload };
     case "ADD_TO_PLAYLISTS":
-      return { ...state, playlists: action.payload };
+    // return { ...state, playlists: action.payload };
     case "TOGGLE_INPUT_BOX":
-      return { ...state, playlists: action.payload };
+    // return { ...state, playlists: action.payload };
     case "DELETE_FROM_PLAYLISTS":
       return { ...state, playlists: action.payload };
+    case "SET_PLAYLIST":
+      console.log(action.payload);
+      return { ...state, playlists: [...state.playlists, action.payload] };
     default:
       return state;
   }
