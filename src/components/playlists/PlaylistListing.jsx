@@ -17,7 +17,9 @@ const PlaylistListing = () => {
           <i className="fa-regular fa-square-plus"></i>
           CREATE PLAYLIST
         </button>
-        {toggleInputBox ? <AddPlaylist /> : null}
+        {toggleInputBox ? (
+          <AddPlaylist toggleInput={setToggleInputBox} />
+        ) : null}
         <div>
           {state.playlists.map((playlist) => (
             <PlaylistBox playlist={playlist} key={playlist._id} />

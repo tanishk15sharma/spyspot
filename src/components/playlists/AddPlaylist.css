@@ -11,3 +11,8 @@
 .hide {
   display: none;
 }
+.msg-text {
+  padding: 0rem 2.2rem;
+  text-decoration: underline;
+  color: gray;
+}

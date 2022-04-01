@@ -18,15 +18,11 @@ const LikeListing = () => {
 
           <div className="like-options">
             <div className="like-title">{video.title}</div>
-            <div className="like-icons">
-              <i className="fa-solid fa-thumbs-up like-icon"></i>
-              <i
-                onClick={() => dislikeVideo(video._id, dispatch)}
-                className="fa-regular fa-thumbs-down like-icon"
-              ></i>
-            </div>
+            <i
+              onClick={() => dislikeVideo(video._id, dispatch)}
+              className="fa-regular fa-thumbs-down like-icon"
+            ></i>
           </div>
-
           <div className="like-type">{video.category}</div>
         </div>
       ))}

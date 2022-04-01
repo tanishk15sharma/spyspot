@@ -10,7 +10,7 @@ const PlaylistBox = ({ playlist }) => {
   const { dispatch } = useUserVideos();
 
   return (
-    <div>
+    <div className="wrapper">
       <div
         className="playlist-box"
         key={playlist._id}
@@ -37,7 +37,7 @@ const PlaylistBox = ({ playlist }) => {
       </div>
       <div className={togglePlaylistBox ? "show-box" : "playlist-videos-box"}>
         {playlist.videos.length === 0 ? (
-          <h2>No items in your playlist</h2>
+          <h2 className="msg-text">No Videos in your playlist</h2>
         ) : (
           playlist.videos?.map((video) => {
             return (
@@ -51,7 +51,7 @@ const PlaylistBox = ({ playlist }) => {
                 <div className="like-options">
                   <div className="like-title">{video.title}</div>
                   <i
-                    className="fa-regular fa-trash-can"
+                    className="fa-solid fa-trash"
                     onClick={() =>
                       removeVideoFromPlaylist(playlist._id, video._id, dispatch)
                     }

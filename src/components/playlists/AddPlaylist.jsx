@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos";
 import { createPlaylist } from "../../utilities/playlist-utils";
 import "./AddPlaylist.css";
-const AddPlaylist = () => {
+const AddPlaylist = ({ toggleInput }) => {
   const { dispatch } = useUserVideos();
   const [playlistName, setPlaylistName] = useState("");
   const clickHandler = () => {
@@ -11,6 +11,7 @@ const AddPlaylist = () => {
       return;
     }
     createPlaylist(playlistName, dispatch);
+    toggleInput(false);
   };
   return (
     <div className="ab-center">

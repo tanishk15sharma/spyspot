@@ -20,7 +20,7 @@ const WatchLaterListing = () => {
               <span className="txt-xxl">{video.title}</span>
               <div>
                 <p onClick={() => removeFromWatchLater(video._id, dispatch)}>
-                  <i className="fa-regular fa-trash-can"></i>
+                  <i className="fa-solid fa-trash"></i>
                 </p>
               </div>
             </div>

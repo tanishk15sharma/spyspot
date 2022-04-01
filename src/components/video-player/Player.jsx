@@ -28,9 +28,7 @@ const Player = () => {
           allowFullScreen
         ></iframe>
 
-        {toggleModal ? (
-          <PlaylistModal video={video} setModal={setToggleModal} />
-        ) : null}
+        {toggleModal ? <PlaylistModal video={video} /> : null}
         <div className="player-details">
           <div className="player-options">
             <div className="txt-xxl">{video.title}</div>
