@@ -32,6 +32,13 @@ const userVideosReducer = (state, action) => {
     case "SET_PLAYLIST":
       console.log(action.payload);
       return { ...state, playlists: [...state.playlists, action.payload] };
+    case "ADD_VIDEO":
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist) =>
+          playlist._id === action.payload._id ? action.payload : playlist
+        ),
+      };
     default:
       return state;
   }
@@ -50,12 +57,20 @@ const UserVideosProvider = ({ children }) => {
     })();
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      const playlists = await getPlaylists();
+      console.log(playlists);
+    })();
+  });
+
   const [state, dispatch] = useReducer(userVideosReducer, {
     watchLater: [],
     likes: [],
     allVideos: [],
     playlists: [],
   });
+  console.log(state);
   return (
     <UserVideosContext.Provider value={{ state, dispatch }}>
       {children}

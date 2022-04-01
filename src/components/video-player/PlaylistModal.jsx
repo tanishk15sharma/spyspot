@@ -32,7 +32,9 @@ const PlaylistModal = ({ video }) => {
                   <input
                     type="checkbox"
                     className="margin-rt"
-                    onChange={() => addVideoToPlaylist(playlist._id, video)}
+                    onChange={() =>
+                      addVideoToPlaylist(playlist._id, video, dispatch)
+                    }
                   />
                   {playlist.title}
                 </div>

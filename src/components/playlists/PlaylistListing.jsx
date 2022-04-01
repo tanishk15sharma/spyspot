@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos.jsx";
-import {
-  deletePlaylist,
-  setPlaylist,
-} from "../../utilities/playlist-utils.jsx";
 import { AddPlaylist } from "./AddPlaylist.jsx";
 import { PlaylistBox } from "./PlaylistBox.jsx";
 import "./PlaylistListing.css";
 const PlaylistListing = () => {
   const { state } = useUserVideos();
   const [toggleInputBox, setToggleInputBox] = useState(false);
-
-  console.log(state.playlists);
 
   return (
     <div>
@@ -23,7 +17,7 @@ const PlaylistListing = () => {
           <i className="fa-regular fa-square-plus"></i>
           CREATE PLAYLIST
         </button>
-        {toggleInputBox ? <AddPlaylist /> : ""}
+        {toggleInputBox ? <AddPlaylist /> : null}
         <div>
           {state.playlists.map((playlist) => (
             <PlaylistBox playlist={playlist} key={playlist._id} />

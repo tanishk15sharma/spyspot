@@ -56,7 +56,7 @@ const setPlaylist = async (id, setVideos) => {
   }
 };
 
-const addVideoToPlaylist = async (id, video) => {
+const addVideoToPlaylist = async (id, video, dispatch) => {
   try {
     const res = await axios.post(
       `/api/user/playlists/${id}`,
@@ -67,6 +67,8 @@ const addVideoToPlaylist = async (id, video) => {
         },
       }
     );
+
+    dispatch({ type: "ADD_VIDEO", payload: res.data.playlist });
     console.log(res);
   } catch (err) {
     console.log(err);
