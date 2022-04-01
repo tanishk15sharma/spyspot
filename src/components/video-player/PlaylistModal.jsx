@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 import { useUserVideos } from "../../contexts/user-videos";
+import { useClickOutside } from "../../hooks/useClickOutside";
 import {
   addVideoToPlaylist,
   createPlaylist,
@@ -8,11 +10,11 @@ import {
 
 import "./Player.css";
 
-const PlaylistModal = ({ video }) => {
+const PlaylistModal = ({ video, toggleModal }) => {
   const { state } = useUserVideos();
   const [playlistTitle, setPlaylistTitle] = useState("");
   const { dispatch } = useUserVideos();
-
+  const modalRef = useRef(null);
   const clickHandler = () => {
     if (playlistTitle === "") {
       alert("please write a name of playlist");
@@ -21,10 +23,13 @@ const PlaylistModal = ({ video }) => {
     createPlaylist(playlistTitle, dispatch);
     setPlaylistTitle("");
   };
-
+  useClickOutside(modalRef, toggleModal);
+  useEffect(() => {
+    console.log(modalRef);
+  }, []);
   return (
-    <div>
-      <div className="ab-center">
+    <div className="a">
+      <div className="ab-center" ref={modalRef}>
         <div className="line">
           {state.playlists.length === 0 ? (
             <h4 className="light-name">Create a playlist </h4>

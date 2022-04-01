@@ -28,15 +28,17 @@ const Player = () => {
           allowFullScreen
         ></iframe>
 
-        {toggleModal ? <PlaylistModal video={video} /> : null}
+        {toggleModal ? (
+          <PlaylistModal
+            video={video}
+            toggleModal={() => setToggleModal(false)}
+          />
+        ) : null}
         <div className="player-details">
           <div className="player-options">
             <div className="txt-xxl">{video.title}</div>
             <div>
-              <span
-                className="player-nav"
-                onClick={() => setToggleModal(!toggleModal)}
-              >
+              <span className="player-nav" onClick={() => setToggleModal(true)}>
                 <i className="fa-solid fa-plus player-icon"></i>
                 Add to playlist
               </span>
