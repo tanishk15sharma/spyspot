@@ -30,11 +30,15 @@
 .line {
   border-bottom: 1px solid gray;
   margin: 0.5rem;
+  margin-bottom: 1rem;
 }
 .light-name {
   color: gray;
 }
-
+.playlist-head {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
 .margin-rt {
   margin-right: 0.5rem;
 }

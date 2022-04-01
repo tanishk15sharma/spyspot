@@ -39,6 +39,13 @@ const userVideosReducer = (state, action) => {
           playlist._id === action.payload._id ? action.payload : playlist
         ),
       };
+    case "REMOVE_VIDEO":
+      return {
+        ...state,
+        playlists: state.playlists.map((playlist) =>
+          playlist._id === action.payload._id ? action.payload : playlist
+        ),
+      };
     default:
       return state;
   }

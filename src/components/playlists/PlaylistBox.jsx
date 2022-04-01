@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos";
-import { deletePlaylist } from "../../utilities/playlist-utils";
+import {
+  deletePlaylist,
+  removeVideoFromPlaylist,
+} from "../../utilities/playlist-utils";
 
 const PlaylistBox = ({ playlist }) => {
   const [togglePlaylistBox, setTogglePlaylistBox] = useState(false);
@@ -47,7 +50,12 @@ const PlaylistBox = ({ playlist }) => {
                 </div>
                 <div className="like-options">
                   <div className="like-title">{video.title}</div>
-                  <i className="fa-regular fa-trash-can"></i>
+                  <i
+                    className="fa-regular fa-trash-can"
+                    onClick={() =>
+                      removeVideoFromPlaylist(playlist._id, video._id, dispatch)
+                    }
+                  ></i>
                 </div>
                 <div className="like-type">{video.category}</div>
               </div>

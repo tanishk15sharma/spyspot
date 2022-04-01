@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useUserVideos } from "../../contexts/user-videos";
 import { likeVideo } from "../../utilities/likes-utils";
@@ -9,6 +9,7 @@ import { PlaylistModal } from "./PlaylistModal";
 const Player = () => {
   const { videoId } = useParams();
   const { state, dispatch } = useUserVideos();
+  const [toggleModal, setToggleModal] = useState(false);
 
   const video = state.allVideos.find((item) => item._id === videoId);
   if (!video) {
@@ -27,12 +28,17 @@ const Player = () => {
           allowFullScreen
         ></iframe>
 
+        {toggleModal ? (
+          <PlaylistModal video={video} setModal={setToggleModal} />
+        ) : null}
         <div className="player-details">
           <div className="player-options">
-            <PlaylistModal video={video} />
             <div className="txt-xxl">{video.title}</div>
             <div>
-              <span className="player-nav">
+              <span
+                className="player-nav"
+                onClick={() => setToggleModal(!toggleModal)}
+              >
                 <i className="fa-solid fa-plus player-icon"></i>
                 Add to playlist
               </span>
