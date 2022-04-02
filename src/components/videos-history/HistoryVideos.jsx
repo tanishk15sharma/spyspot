@@ -1,9 +1,10 @@
 import React from "react";
 import { useUserVideos } from "../../contexts/user-videos";
+import { deleteHistoryVideo } from "../../utilities/history-utils";
 import "./HistoryVideos.css";
 
 const HistoryVideos = () => {
-  const { state } = useUserVideos();
+  const { state, dispatch } = useUserVideos();
   return (
     <div className="history-container">
       <div className="history-info">
@@ -34,7 +35,10 @@ const HistoryVideos = () => {
                 </div>
               </div>
 
-              <i className="fa-solid fa-trash"></i>
+              <i
+                className="fa-solid fa-trash"
+                onClick={() => deleteHistoryVideo(video._id, dispatch)}
+              ></i>
             </div>
           </div>
         ))}

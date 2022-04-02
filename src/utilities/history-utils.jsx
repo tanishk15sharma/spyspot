@@ -28,4 +28,15 @@ const addVideoToHistory = async (video, dispatch) => {
   }
 };
 
-export { getHistoryArr, addVideoToHistory };
+const deleteHistoryVideo = async (id, dispatch) => {
+  try {
+    const { data } = await axios.delete(`/api/user/history/${id}`, {
+      headers: { authorization: getToken() },
+    });
+    dispatch({ type: "REMOVE_FROM_HISTORY", payload: data.history });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getHistoryArr, addVideoToHistory, deleteHistoryVideo };
