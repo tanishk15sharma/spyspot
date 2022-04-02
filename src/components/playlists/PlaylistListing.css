@@ -1,5 +1,4 @@
 .playlists-wrapper {
-  border: 1px solid red;
   padding: 2rem 4rem;
 }
 .playlist-box {
@@ -23,7 +22,6 @@
 }
 
 .playlist-videos-box {
-  border: 1px solid red;
   display: none;
   transform: translateY(-70%);
   transition: all 1s;

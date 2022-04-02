@@ -11,10 +11,12 @@ const Sidebar = () => {
         <Menu menuVal={toggleMenu} setMenu={() => setToggleMenu(false)} />
       </div>
       <div className="side-nav">
-        <div className="side-icon-div">
-          <span class="material-icons side-icon">home</span>
-          <p>Home</p>
-        </div>
+        <Link to="/">
+          <div className="side-icon-div">
+            <span class="material-icons side-icon">home</span>
+            <p>Home</p>
+          </div>
+        </Link>
         <Link to="/videos">
           <div className="side-icon-div">
             <span class="material-icons side-icon">explore</span>

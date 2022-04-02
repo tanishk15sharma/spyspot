@@ -9,10 +9,12 @@ const Menu = ({ menuVal, setMenu }) => {
   return (
     <div className={menuVal ? "menu visible" : "menu"} ref={menuRef}>
       <div className="menu-nav">
-        <div className="menu-icon-div">
-          <i class="fa-solid fa-house menu-icon "></i>
-          <p>Home</p>
-        </div>
+        <Link to="/">
+          <div className="menu-icon-div">
+            <i class="fa-solid fa-house menu-icon "></i>
+            <p>Home</p>
+          </div>
+        </Link>
         <Link to="/videos">
           <div className="menu-icon-div">
             <i class="fa-solid fa-compass menu-icon "></i>
