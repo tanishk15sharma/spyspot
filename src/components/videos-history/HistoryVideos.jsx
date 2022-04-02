@@ -1,14 +1,21 @@
 import React from "react";
 import { useUserVideos } from "../../contexts/user-videos";
 import "./HistoryVideos.css";
+
 const HistoryVideos = () => {
   const { state } = useUserVideos();
   return (
     <div className="history-container">
       <div className="history-info">
-        this is history section
-        <div>NO. </div>
-        <button className="btn">CLEAR ALL </button>
+        <span class="material-icons icon-highlight ">history</span>
+        <div>
+          <div className="txt-highlight">
+            History Videos : {state.history.length}
+          </div>
+          <div>
+            <button className="btn btn-square">CLEAR ALL </button>
+          </div>
+        </div>
       </div>
       <div className="wrap">
         {state.history.map((video) => (
