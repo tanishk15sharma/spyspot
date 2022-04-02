@@ -20,7 +20,12 @@ const Nav = () => {
         LOGIN
         <i className="fa-solid fa-circle-user"></i>
       </button>
-      <UserLogin displayVal={toggleLogin} />
+
+      {toggleLogin ? (
+        <UserLogin toggleLogin={() => setToggleLogin(false)} />
+      ) : null}
+
+      {/* <UserLogin toggleVal={toggleLogin} setToggleVal={setToggleLogin} /> */}
     </nav>
   );
 };

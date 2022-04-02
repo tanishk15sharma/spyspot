@@ -4,6 +4,7 @@ import { getWatchLaterArr } from "../utilities/watchlater-utils";
 import { getAllVideos } from "../utilities/allvideos-utils";
 import { getPlaylists } from "../utilities/playlist-utils.jsx";
 import { getHistoryArr } from "../utilities/history-utils";
+import { getToken } from "../utilities/helper-utils";
 const UserVideosContext = createContext();
 
 const userVideosReducer = (state, action) => {
@@ -64,6 +65,11 @@ const UserVideosProvider = ({ children }) => {
     (async () => {
       const allVideos = await getAllVideos();
       dispatch({ type: "SET_VIDEOS", payload: allVideos });
+
+      if (!getToken()) {
+        return;
+      }
+
       const wishlist = await getWatchLaterArr();
       dispatch({ type: "SET_WATCHLATER", payload: wishlist });
       const likes = await getLikesArr();

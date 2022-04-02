@@ -1,10 +1,13 @@
 import "./UserLogin.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
-const UserLogin = (displayVal) => {
+const UserLogin = ({ toggleLogin }) => {
+  console.log(toggleLogin);
+  const loginRef = useRef(null);
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -13,7 +16,7 @@ const UserLogin = (displayVal) => {
     email: "",
     password: "",
   });
-  const { authState, authDispatch } = useAuth();
+  const { authDispatch } = useAuth();
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -46,6 +49,8 @@ const UserLogin = (displayVal) => {
     postLoginDetails(loginData.email, loginData.password);
   };
 
+  useClickOutside(loginRef, toggleLogin);
+
   const testHandler = () => {
     setLoginData({
       email: "adarshbalika@gmail.com",
@@ -53,11 +58,7 @@ const UserLogin = (displayVal) => {
     });
   };
   return (
-    <form
-      style={{ display: !displayVal.displayVal && "none" }}
-      className="ab-center"
-      onSubmit={handleSubmit}
-    >
+    <form className="ab-center" onSubmit={handleSubmit} ref={loginRef}>
       <div className="form-div">
         <input
           className="bg-input"
@@ -88,7 +89,13 @@ const UserLogin = (displayVal) => {
         <button className="user-btn">Login</button>
         <div>
           <span className="secondary-txt">CREATE NEW ACCOUNT</span>
-          <button className="btn-sm" onClick={testHandler}>
+          <button
+            className="btn-sm"
+            onClick={() => {
+              testHandler();
+              setToggleVal(false);
+            }}
+          >
             TEST LOGIN
           </button>
         </div>

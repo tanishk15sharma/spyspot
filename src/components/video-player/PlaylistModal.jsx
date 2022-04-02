@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 import { useUserVideos } from "../../contexts/user-videos";
 import { useClickOutside } from "../../hooks/useClickOutside";
@@ -24,9 +24,7 @@ const PlaylistModal = ({ video, toggleModal }) => {
     setPlaylistTitle("");
   };
   useClickOutside(modalRef, toggleModal);
-  useEffect(() => {
-    console.log(modalRef);
-  }, []);
+
   return (
     <div className="a">
       <div className="ab-center" ref={modalRef}>
