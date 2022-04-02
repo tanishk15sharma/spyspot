@@ -21,7 +21,7 @@ const addVideoToHistory = async (video, dispatch) => {
       { video },
       { headers: { authorization: getToken() } }
     );
-    console.log(data);
+
     dispatch({ type: "ADD_TO_HISTORY", payload: data.history });
   } catch (err) {
     console.log(err);
@@ -39,4 +39,16 @@ const deleteHistoryVideo = async (id, dispatch) => {
   }
 };
 
-export { getHistoryArr, addVideoToHistory, deleteHistoryVideo };
+const clearHistory = async (dispatch) => {
+  try {
+    const { data } = await axios.delete("/api/user/history/all", {
+      headers: { authorization: getToken() },
+    });
+
+    dispatch({ type: "CLEAR_HISTORY", payload: data.history });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getHistoryArr, addVideoToHistory, deleteHistoryVideo, clearHistory };
