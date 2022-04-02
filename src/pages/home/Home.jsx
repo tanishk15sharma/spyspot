@@ -19,7 +19,7 @@ const Home = () => {
             <span className="highlight-txt">!</span>
           </p>
           <Link to="/videos">
-            <button className="btn">EXPLORE</button>
+            <button className="btn btn-round">EXPLORE</button>
           </Link>
         </aside>
         <div className="home-video">
