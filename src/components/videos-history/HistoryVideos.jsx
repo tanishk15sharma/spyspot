@@ -6,16 +6,21 @@ const HistoryVideos = () => {
       <div className="history-info">
         this is history section
         <div>NO. </div>
-        <button>CLEAR ALL </button>
+        <button className="btn">CLEAR ALL </button>
       </div>
       <div className="history-lists">
         <div className="flex-space-btw">
           <div>
-            <div>
-              <img />
+            <div className="flex-space-btw">
+              <img
+                src={`https://i.ytimg.com/vi/aaaa/maxresdefault.jpg`}
+                className="full-img"
+              />
+              <div>
+                <h2>title</h2>
+                <h2>category</h2>
+              </div>
             </div>
-            <h2>title</h2>
-            <h2>category</h2>
           </div>
           <div>icon</div>
         </div>

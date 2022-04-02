@@ -49,6 +49,8 @@ const userVideosReducer = (state, action) => {
       };
     case "SET_HISTORY":
       return { ...state, history: action.payload };
+    case "ADD_TO_HISTORY":
+      return { ...state, history: action.payload };
 
     default:
       return state;
@@ -77,7 +79,7 @@ const UserVideosProvider = ({ children }) => {
     playlists: [],
     history: [],
   });
-  console.log(state);
+
   return (
     <UserVideosContext.Provider value={{ state, dispatch }}>
       {children}

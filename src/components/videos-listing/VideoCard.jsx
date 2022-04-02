@@ -4,6 +4,7 @@ import { useUserVideos } from "../../contexts/user-videos";
 import { Link } from "react-router-dom";
 import { likeVideo } from "../../utilities/likes-utils";
 import { addToWatchLater } from "../../utilities/watchlater-utils";
+import { addVideoToHistory } from "../../utilities/history-utils";
 
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
@@ -12,7 +13,10 @@ const VideoCard = ({ video }) => {
   return (
     <div className="video-card relative">
       <Link to={`/videos/${video._id}`}>
-        <div className="video-img-div">
+        <div
+          className="video-img-div"
+          onClick={() => addVideoToHistory(video, dispatch)}
+        >
           <img
             src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
             className="video-thumbnail"

@@ -30,10 +30,12 @@ const Sidebar = () => {
             <p>Likes</p>
           </div>
         </Link>
-        <div className="side-icon-div">
-          <i className="fa-solid fa-clock-rotate-left side-icon"></i>
-          <p>History</p>
-        </div>
+        <Link to="/history">
+          <div className="side-icon-div">
+            <i className="fa-solid fa-clock-rotate-left side-icon"></i>
+            <p>History</p>
+          </div>
+        </Link>
         <Link to="/watchlater">
           <div className="side-icon-div">
             <i className="fa-solid fa-bookmark side-icon"></i>
