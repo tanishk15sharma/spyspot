@@ -8,9 +8,9 @@
   width: 80px;
   text-align: center;
   /* display: none; */
+  z-index: 8;
 }
 .side-icon-div {
-  margin-top: 0.5rem;
   margin-bottom: 2rem;
   color: var(--primary-color);
 }
@@ -29,5 +29,9 @@
   margin-top: 2rem;
 }
 .hamburger {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
+  cursor: pointer;
+}
+.xxl {
+  font-size: 2.5rem;
 }

@@ -1,0 +1,30 @@
+.menu {
+  position: fixed;
+  background-color: var(--background-secondary-color);
+  width: 260px;
+  height: 100vh;
+  z-index: 6;
+  transform: translateX(-300px);
+  transition: all 0.5s;
+}
+.visible {
+  transform: translateX(0px);
+}
+.menu-nav {
+  margin-top: 1rem;
+  border-top: 1px solid var(--background-light-color);
+}
+.menu-icon-div {
+  display: flex;
+  padding: 1.4rem 1.6rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  transition: all 0.3s;
+}
+.menu-icon {
+  margin-right: 2rem;
+  font-size: 1.4rem;
+}
+.menu-icon-div:hover {
+  background-color: var(--background-light-color);
+}
