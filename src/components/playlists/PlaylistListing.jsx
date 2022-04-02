@@ -18,7 +18,7 @@ const PlaylistListing = () => {
           CREATE PLAYLIST
         </button>
         {toggleInputBox ? (
-          <AddPlaylist toggleInput={setToggleInputBox} />
+          <AddPlaylist toggleInput={() => setToggleInputBox(false)} />
         ) : null}
         <div>
           {state.playlists.map((playlist) => (

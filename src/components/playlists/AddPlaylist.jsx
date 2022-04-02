@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useUserVideos } from "../../contexts/user-videos";
 import { createPlaylist } from "../../utilities/playlist-utils";
 import "./AddPlaylist.css";
+import { useClickOutside } from "../../hooks/useClickOutside";
+
 const AddPlaylist = ({ toggleInput }) => {
+  const addPlaylistRef = useRef(null);
   const { dispatch } = useUserVideos();
   const [playlistName, setPlaylistName] = useState("");
   const clickHandler = () => {
@@ -13,8 +16,10 @@ const AddPlaylist = ({ toggleInput }) => {
     createPlaylist(playlistName, dispatch);
     toggleInput(false);
   };
+  useClickOutside(addPlaylistRef, toggleInput);
+
   return (
-    <div className="ab-center">
+    <div className="ab-center" ref={addPlaylistRef}>
       <input
         value={playlistName}
         className="bg-input"
