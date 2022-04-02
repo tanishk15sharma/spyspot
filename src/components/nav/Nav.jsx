@@ -13,12 +13,12 @@ const Nav = () => {
       <div className="search-div">
         <input className="search" placeholder="search" />
         <div>
-          <i className="fa-solid fa-magnifying-glass"></i>
+          <span class="material-icons search-icon">search</span>
         </div>
       </div>
       <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
-        LOGIN
         <i className="fa-solid fa-circle-user"></i>
+        LOGIN
       </button>
 
       {toggleLogin ? (

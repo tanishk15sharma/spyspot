@@ -31,10 +31,9 @@ nav {
 .search:focus {
   outline: none;
 }
-.fa-magnifying-glass {
-  font-size: 1.5rem;
+.search-icon {
+  font-size: 1.8rem;
   padding: 9px 1rem;
-
   background-color: var(--background-light-color);
 }
 .fa-microphone-lines {
@@ -46,4 +45,8 @@ nav {
 .btn {
   background-color: var(--background-primary-color);
   padding: 0.7rem;
+}
+.fa-circle-user {
+  margin: 0 8px;
+  font-size: 1rem;
 }
