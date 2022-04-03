@@ -53,8 +53,8 @@ const Home = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="absolute-h">
-            <div className="flex-box">
+          <div>
+            <div className="category-box">
               {filterState.categories.map(
                 ({ categoryName, _id }, index) =>
                   index < 4 && (
