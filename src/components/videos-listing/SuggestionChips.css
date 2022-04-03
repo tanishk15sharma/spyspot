@@ -3,6 +3,9 @@
   background: var(--background-secondary-color);
   border-top: 1px solid var(--background-light-color);
   /* display: none; */
+  position: sticky;
+  top: 4.9rem;
+  z-index: 6;
 }
 .btn-round {
   border-radius: 2rem;
@@ -10,6 +13,7 @@
   background-color: var(--background-light-color);
   padding-left: 1rem;
   padding-right: 1rem;
+
   border: 1px solid var(--action-color);
   margin-bottom: 0.5rem;
 }
@@ -26,5 +30,18 @@
 @media (max-width: 1070px) {
   .chips-div {
     padding: 0.8rem;
+  }
+  .btn-round {
+    margin: 5px;
+  }
+}
+@media (max-width: 840px) {
+  .chips-div {
+    top: 4.8rem;
+  }
+}
+@media (max-width: 540px) {
+  .chips-div {
+    top: 4rem;
   }
 }

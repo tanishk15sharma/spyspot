@@ -6,10 +6,10 @@ const Sidebar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <div className="sidebar">
-      <div className="hamburger" onClick={() => setToggleMenu(true)}>
+      {/* <div className="hamburger" onClick={() => setToggleMenu(true)}>
         <span class="material-icons side-icon xxl">menu</span>
         <Menu menuVal={toggleMenu} setMenu={() => setToggleMenu(false)} />
-      </div>
+      </div> */}
       <div className="side-nav">
         <Link to="/">
           <div className="side-icon-div">

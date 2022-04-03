@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { UserLogin } from "../login/UserLogin";
+import { Menu } from "../sidebar/Menu";
 import "./Nav.css";
 const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
     <nav>
       <div>
         <div className="logo">
-          <i class="fa-solid fa-bars nav-menu-bar"></i>
+          <i
+            class="fa-solid fa-bars nav-menu-bar"
+            onClick={() => setToggleMenu(true)}
+          ></i>
+          <Menu menuVal={toggleMenu} setMenu={() => setToggleMenu(false)} />
           SPY
           <i className="fa-brands fa-reddit"></i>SPOT
         </div>

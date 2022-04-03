@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useFilters } from "../../contexts/filters";
 import { useUserVideos } from "../../contexts/user-videos";

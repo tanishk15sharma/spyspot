@@ -45,7 +45,7 @@
 
 @media (max-width: 1070px) {
   .left {
-    width: initial;
+    width: 100%;
   }
   .videos-wrapper {
     padding: 1rem;
