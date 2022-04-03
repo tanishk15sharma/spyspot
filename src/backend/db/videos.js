@@ -59,4 +59,60 @@ export const videos = [
       "NBA video clips used in this video are licensed through partnership with NBA Playmakers.Music provided by Epidemic SoundThis video features players like Lonzo Ball, Chris Paul, DeMar Derozan, Anthony Davis, Ja Morant and Stephen Curry",
     category: "Ankle Breaker",
   },
+  {
+    _id: "6aA4jkowCOE",
+    title: "NBA's Best Alley-Oops | 2018-19 NBA Regular Season",
+    description:
+      "NBA's Best Alley-Oops . 2018 6 season match and 2019 first season . ",
+    category: "Alley oops",
+  },
+  {
+    _id: "-lp2asyRv8w",
+    title: "Top 10 All-Time Alley Oops in All-Star Game History",
+    description:
+      "Check out the Top 10 alley oops in the 62 year history of the All-Star Game. Visit nba.com/video for more highlights. ",
+    category: "Alley oops",
+  },
+  {
+    _id: "oqBP6hh1k-4",
+    title: "NBA Self Alley-Oops",
+    description:
+      "Check out the Top self oops in the All-Star Game. Visit nba.com/video for more highlights. ",
+    category: "Alley oops",
+  },
+  {
+    _id: "74cWWlpYE_Q",
+    title: "NBA - Best Plays of 2021 Season 🔥 ",
+    description:
+      "This video features players like: Kyrie Irving, James Harden, Chris Paul, LeBron James, Kevin Durant, Stephen Curry and LaMelo Ball.",
+    category: "Best Highlights",
+  },
+  {
+    _id: "T06yJR-Xzd4",
+    title: "Kobe Bryant Amazing last 3 minutes in his FINAL GAME .",
+    description:
+      "LOS ANGELES (AP) Kobe Bryant scored 60 incredible points. He carried a miserable Los Angeles Lakers team to an improbable comeback victory",
+    category: "Best Highlights",
+  },
+  {
+    _id: "l4TifMV22wc",
+    title: "NBA 2022 Season Is FIRE 🔥 MOMENTS",
+    description:
+      "NBA 2022 Season Is FIRE 🔥 MOMENTS includes players such as LeBron James, Stephen Curry, LaMelo Ball, Luka Doncic, Russell Westbrook, Joel Embiid, Giannis Antetokounmpo and many more NBA Superstars!",
+    category: "Best Highlights",
+  },
+  {
+    _id: "WaYAhkH2cJM",
+    title: "TOP 10 MOST EPIC NBA MOMENTS EVER",
+    description:
+      "NBA most epic  MOMENTS includes players such as LeBron James, Stephen Curry, LaMelo Ball, Luka Doncic, Russell Westbrook and many more NBA Superstars!",
+    category: "Best Highlights",
+  },
+  {
+    _id: "5W851X3Nw2A",
+    title: "Devonte' Graham LONGEST GAME WINNING",
+    description:
+      "Shai hits a nearly impossible shot to tie... then Devonte' Graham hits the miracle 65 foot shot for the win! #TissotBuzzerBeater",
+    category: "Best Highlights",
+  },
 ];
