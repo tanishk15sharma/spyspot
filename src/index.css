@@ -38,3 +38,13 @@ img {
 a {
   color: #000;
 }
+@media (max-width: 840px) {
+  html {
+    font-size: 92%;
+  }
+}
+@media (max-width: 540px) {
+  html {
+    font-size: 100%;
+  }
+}

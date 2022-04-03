@@ -5,15 +5,26 @@ import "./SuggestionChips.css";
 const SuggestionChips = () => {
   const { filterState, filterDispatch } = useFilters();
 
-  // useEffect(() => {
-  //   filterDispatch({
-  //     type: "SET_ACTIVE_BUTTON",
-  //     payload:
-  //       filterState.categories.length !== 0
-  //         ? filterState.categories[0]._id
-  //         : "",
-  //   });
-  // }, [filterState.categories]);
+  useEffect(() => {
+    filterDispatch({
+      type: "SET_ACTIVE_BUTTON",
+      payload:
+        filterState.categories.length !== 0
+          ? filterState.categories[0]._id
+          : "",
+    });
+  }, [filterState.categories]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/categories");
+        filterDispatch({ type: "SET_CATEGORIES", payload: data.categories });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
 
   return (
     <div className="chips-div">

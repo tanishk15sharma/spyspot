@@ -11,6 +11,7 @@
 }
 .video-type {
   color: var(--secondary-text);
+  padding-left: 5px;
 }
 .pd-sm {
   padding: 0.5rem 0.2rem;

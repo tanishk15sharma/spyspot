@@ -7,6 +7,11 @@ nav {
   justify-content: space-between;
   /* display: none; */
 }
+
+.nav-menu-bar {
+  display: none;
+}
+
 .logo {
   font-size: 2rem;
 }
@@ -49,4 +54,37 @@ nav {
 .fa-circle-user {
   margin: 0 8px;
   font-size: 1rem;
+}
+@media (max-width: 1240px) {
+  .logo {
+    /* border: 1px solid red; */
+    margin-left: 0.5rem;
+  }
+}
+@media (max-width: 1070px) {
+  .sidebar {
+    border: 1px solid red;
+    display: none;
+    transform: translateX(-100px);
+  }
+  .nav-menu-bar {
+    display: inline;
+    margin-right: 1rem;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}
+@media (max-width: 720px) {
+  .search-div {
+    display: none;
+  }
+}
+@media (max-width: 540px) {
+  .logo {
+    font-size: 1.6rem;
+  }
+  .btn {
+    font-size: 0.9rem;
+  }
 }

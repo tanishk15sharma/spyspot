@@ -6,9 +6,12 @@ const Nav = () => {
 
   return (
     <nav>
-      <div className="logo">
-        SPY
-        <i className="fa-brands fa-reddit"></i>SPOT
+      <div>
+        <div className="logo">
+          <i class="fa-solid fa-bars nav-menu-bar"></i>
+          SPY
+          <i className="fa-brands fa-reddit"></i>SPOT
+        </div>
       </div>
       <div className="search-div">
         <input className="search" placeholder="search" />

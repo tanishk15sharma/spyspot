@@ -11,6 +11,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   border: 1px solid var(--action-color);
+  margin-bottom: 0.5rem;
 }
 .btn-round:hover {
   border: 1px solid var(--primary-color);
@@ -21,4 +22,9 @@
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   color: var(--background-light-color);
+}
+@media (max-width: 1070px) {
+  .chips-div {
+    padding: 0.8rem;
+  }
 }

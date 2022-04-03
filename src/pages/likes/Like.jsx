@@ -7,11 +7,11 @@ const Like = () => {
   return (
     <div>
       <div>
-        <div className="left">
+        <div>
           <Nav />
         </div>
         <Sidebar />
-        <div className="left">
+        <div>
           <LikeListing />
         </div>
       </div>
