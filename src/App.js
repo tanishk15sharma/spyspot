@@ -7,6 +7,7 @@ import {
   VideoPlayer,
   Playlists,
   History,
+  Home,
 } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />

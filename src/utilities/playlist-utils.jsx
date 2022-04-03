@@ -24,7 +24,7 @@ const createPlaylist = async (name, dispatch) => {
 
       { headers: { authorization: getToken() } }
     );
-    console.log(data);
+
     dispatch({ type: "ADD_TO_PLAYLISTS", payload: data.playlists });
   } catch (err) {
     console.log(err);
@@ -73,7 +73,6 @@ const addVideoToPlaylist = async (id, video, dispatch) => {
 };
 
 const removeVideoFromPlaylist = async (playlistId, videoId, dispatch) => {
-  console.log(playlistId, videoId);
   try {
     const { data } = await axios.delete(
       `/api/user/playlists/${playlistId}/${videoId}`,

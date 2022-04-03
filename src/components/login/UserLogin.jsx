@@ -6,7 +6,6 @@ import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
 
 const UserLogin = ({ toggleLogin }) => {
-  console.log(toggleLogin);
   const loginRef = useRef(null);
   const [loginData, setLoginData] = useState({
     email: "",
@@ -31,7 +30,7 @@ const UserLogin = ({ toggleLogin }) => {
       authDispatch({ type: "USER_LOAD" });
 
       const { data } = await axios.post("/api/auth/login", { email, password });
-      console.log(data);
+
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
     } catch (err) {

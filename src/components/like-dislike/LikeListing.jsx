@@ -4,7 +4,7 @@ import { dislikeVideo } from "../../utilities/likes-utils";
 import "./LikeListing.css";
 const LikeListing = () => {
   const { state, dispatch } = useUserVideos();
-  console.log(state.likes);
+
   return (
     <div className="like-wrapper">
       {state.likes.map((video) => (

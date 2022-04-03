@@ -32,7 +32,6 @@ const userVideosReducer = (state, action) => {
     case "DELETE_FROM_PLAYLISTS":
       return { ...state, playlists: action.payload };
     case "SET_PLAYLIST":
-      console.log(action.payload);
       return { ...state, playlists: [...state.playlists, action.payload] };
     case "ADD_VIDEO":
       return {
