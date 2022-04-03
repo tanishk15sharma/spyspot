@@ -8,7 +8,7 @@ const PlaylistListing = () => {
   const [toggleInputBox, setToggleInputBox] = useState(false);
 
   return (
-    <div>
+    <>
       <div className="playlists-wrapper">
         <button
           className="btn"
@@ -26,7 +26,7 @@ const PlaylistListing = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

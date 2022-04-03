@@ -1,5 +1,7 @@
 .playlists-wrapper {
   padding: 2rem 4rem;
+  border: 1px solid red;
+  margin-left: 4rem;
 }
 .playlist-box {
   background-color: var(--background-secondary-color);
@@ -27,9 +29,29 @@
   transition: all 1s;
 }
 .show-box {
-  grid-template-columns: 1fr 1fr 1fr;
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .rotate-up {
   transform: rotate(180deg);
+}
+@media (max-width: 1070px) {
+  .playlists-wrapper {
+    margin: 0;
+  }
+}
+@media (max-width: 870px) {
+  .playlists-wrapper {
+    padding: 1.5rem 2rem;
+  }
+}
+@media (max-width: 700px) {
+  .show-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .playlists-wrapper {
+    padding: 1.4rem;
+  }
 }

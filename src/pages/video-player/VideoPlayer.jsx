@@ -6,9 +6,7 @@ const VideoPlayer = () => {
   return (
     <div>
       <div>
-        <div>
-          <Nav />
-        </div>
+        <Nav />
         <Sidebar />
         <div>
           <Player />

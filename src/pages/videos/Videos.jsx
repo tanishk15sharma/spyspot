@@ -7,7 +7,6 @@ const Videos = () => {
   return (
     <div>
       <Nav />
-
       <Sidebar />
       <div className="left">
         <VideosListing />

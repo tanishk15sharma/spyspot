@@ -7,9 +7,7 @@ const History = () => {
   return (
     <div>
       <div>
-        <div>
-          <Nav />
-        </div>
+        <Nav />
         <Sidebar />
         <div>
           <HistoryVideos />

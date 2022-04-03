@@ -8,9 +8,7 @@ const Playlists = () => {
   return (
     <div>
       <div>
-        <div>
-          <Nav />
-        </div>
+        <Nav />
         <Sidebar />
         <div>
           <PlaylistListing />
