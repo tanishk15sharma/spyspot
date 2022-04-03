@@ -14,7 +14,7 @@ const VideosListing = () => {
     state.allVideos,
     filterState.category
   );
-  console.log(filteredVideos);
+
   return (
     <div className="hero-div">
       <SuggestionChips />

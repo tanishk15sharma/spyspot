@@ -1,37 +1,34 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useFilters } from "../../contexts/filters";
 import "./SuggestionChips.css";
 const SuggestionChips = () => {
-  const { filterDispatch } = useFilters();
-  const [categories, setCategories] = useState([]);
-  const [activeBtn, setActiveBtn] = useState("");
+  const { filterState, filterDispatch } = useFilters();
 
-  useEffect(() => {
-    setActiveBtn(categories.length !== 0 ? categories[0]._id : "");
-  }, [categories]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/categories");
-        setCategories(data.categories);
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   filterDispatch({
+  //     type: "SET_ACTIVE_BUTTON",
+  //     payload:
+  //       filterState.categories.length !== 0
+  //         ? filterState.categories[0]._id
+  //         : "",
+  //   });
+  // }, [filterState.categories]);
 
   return (
     <div className="chips-div">
-      {categories.map(({ categoryName, _id }) => (
+      {filterState.categories.map(({ categoryName, _id }) => (
         <button
-          // className="btn btn-round"
-          className={`btn btn-round ${_id === activeBtn ? "active" : ""}   `}
+          className={`btn btn-round ${
+            _id === filterState.activeBtn ||
+            categoryName === filterState.activeBtn
+              ? "active"
+              : ""
+          }`}
           key={_id}
           onClick={() => {
             filterDispatch({ type: "CATEGORY", payload: categoryName });
-            setActiveBtn(_id);
+            filterDispatch({ type: "SET_ACTIVE_BUTTON", payload: _id });
           }}
         >
           {categoryName}

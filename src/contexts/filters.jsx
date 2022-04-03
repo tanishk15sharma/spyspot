@@ -6,12 +6,18 @@ const filterReducer = (state, action) => {
   switch (action.type) {
     case "CATEGORY":
       return { ...state, category: action.payload };
+    case "SET_ACTIVE_BUTTON":
+      return { ...state, activeBtn: action.payload };
+    case "SET_CATEGORIES":
+      return { ...state, categories: action.payload };
     default:
       return state;
   }
 };
 const initialState = {
+  categories: [],
   category: "All",
+  activeBtn: "",
 };
 
 const FilterContextProvider = ({ children }) => {

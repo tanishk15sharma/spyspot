@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFilters } from "../../contexts/filters";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Home.css";
 const Home = () => {
   const navigate = useNavigate();
-  const { filterDispatch } = useFilters();
+  const { filterState, filterDispatch } = useFilters();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/categories");
+        filterDispatch({ type: "SET_CATEGORIES", payload: data.categories });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+
   return (
     <div className="home-top">
       <div className="home-logo">
@@ -19,7 +32,14 @@ const Home = () => {
             <span className="highlight-txt">!</span>
           </p>
           <Link to="/videos">
-            <button className="btn btn-round">EXPLORE</button>
+            <button
+              className="btn btn-round"
+              onClick={() =>
+                filterDispatch({ type: "SET_ACTIVE_BUTTON", payload: "All" })
+              }
+            >
+              EXPLORE
+            </button>
           </Link>
         </aside>
         <div className="home-video">
@@ -28,40 +48,35 @@ const Home = () => {
               className="video-iframe"
               src="https://www.youtube.com/embed/a8Ng2btsXeI?controls=0&amp;start=193"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
           <div className="absolute-h">
             <div className="flex-box">
-              <div
-                className="home-category"
-                onClick={() => {
-                  filterDispatch({ type: "CATEGORY", payload: "3 Pointer" });
-                  navigate("/videos");
-                }}
-              >
-                3 Pointers
-              </div>
-              <div
-                className="home-category"
-                onClick={() => {
-                  filterDispatch({ type: "CATEGORY", payload: "Dunk" });
-                  navigate("./videos");
-                }}
-              >
-                Dunk
-              </div>
-              <div
-                className="home-category"
-                onClick={() => {
-                  filterDispatch({ type: "CATEGORY", payload: "Alley oops" });
-                  navigate("./videos");
-                }}
-              >
-                Alley Oops
-              </div>
+              {filterState.categories.map(
+                ({ categoryName, _id }, index) =>
+                  index < 4 && (
+                    <div
+                      key={_id}
+                      className="home-category"
+                      onClick={() => {
+                        filterDispatch({
+                          type: "CATEGORY",
+                          payload: categoryName,
+                        });
+                        filterDispatch({
+                          type: "SET_ACTIVE_BUTTON",
+                          payload: _id,
+                        });
+                        navigate("/videos");
+                      }}
+                    >
+                      {categoryName}
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>
