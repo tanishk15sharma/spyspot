@@ -7,11 +7,11 @@ const WatchLater = () => {
   return (
     <div>
       <div>
-        <div className="left">
+        <div>
           <Nav />
         </div>
         <Sidebar />
-        <div className="left">
+        <div>
           <WatchLaterListing />
         </div>
       </div>

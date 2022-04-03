@@ -38,8 +38,8 @@ const HistoryVideos = () => {
                   />
                 </div>
                 <div>
-                  <h2>{video.title}</h2>
-                  <h2 className="light-name">{video.category}</h2>
+                  <h3>{video.title}</h3>
+                  <h3 className="light-name">{video.category}</h3>
                 </div>
               </div>
 

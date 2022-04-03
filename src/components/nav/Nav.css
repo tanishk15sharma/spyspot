@@ -59,14 +59,9 @@ nav {
   margin: 0 8px;
   font-size: 1rem;
 }
-@media (max-width: 1240px) {
-  .logo {
-    margin-left: 0.5rem;
-  }
-}
+
 @media (max-width: 1070px) {
   .sidebar {
-    border: 1px solid red;
     display: none;
     transform: translateX(-100px);
   }

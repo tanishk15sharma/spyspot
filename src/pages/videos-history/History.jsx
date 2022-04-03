@@ -7,11 +7,11 @@ const History = () => {
   return (
     <div>
       <div>
-        <div className="left">
+        <div>
           <Nav />
         </div>
         <Sidebar />
-        <div className="left">
+        <div>
           <HistoryVideos />
         </div>
       </div>

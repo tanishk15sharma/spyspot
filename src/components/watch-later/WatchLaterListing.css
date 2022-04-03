@@ -3,9 +3,11 @@
   padding: 2rem 3rem 1rem 3rem;
   gap: 1rem;
   border-bottom: 1px solid var(--background-secondary-color);
+  margin-left: 4rem;
 }
 .sm-img-div {
-  width: 40%;
+  width: 300px;
+  flex-shrink: 0;
 }
 .full-img {
   width: 100%;
@@ -33,4 +35,28 @@
 .video-desp {
   margin-top: 1.4rem;
   color: gray;
+}
+@media (max-width: 1070px) {
+  .horiz-card {
+    margin: 0;
+  }
+}
+@media (max-width: 900px) {
+  .sm-img-div {
+    width: 250px;
+    /* flex-shrink: 1; */
+  }
+}
+@media (max-width: 790px) {
+  .sm-img-div {
+    width: 100%;
+  }
+  .horiz-card {
+    flex-direction: column;
+  }
+}
+@media (max-width: 510px) {
+  .horiz-card {
+    padding: 1rem;
+  }
 }

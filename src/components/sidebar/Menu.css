@@ -9,7 +9,7 @@
   transition: all 0.5s;
 }
 .visible {
-  transform: translateX(-10px);
+  transform: translateX(-15px);
 }
 .menu-nav {
   margin-top: 1rem;
@@ -28,4 +28,9 @@
 }
 .menu-icon-div:hover {
   background-color: var(--background-light-color);
+}
+@media (max-width: 550px) {
+  .menu-nav {
+    border: none;
+  }
 }
