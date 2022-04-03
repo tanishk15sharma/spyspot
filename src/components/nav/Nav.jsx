@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useFilters } from "../../contexts/filters";
 import { UserLogin } from "../login/UserLogin";
 import { Menu } from "../sidebar/Menu";
 import "./Nav.css";
 const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { filterDispatch } = useFilters();
 
   return (
     <nav>
@@ -20,7 +22,13 @@ const Nav = () => {
         </div>
       </div>
       <div className="search-div">
-        <input className="search" placeholder="search" />
+        <input
+          className="search"
+          placeholder="search"
+          onChange={(e) =>
+            filterDispatch({ type: "SEARCH_KEY", payload: e.target.value })
+          }
+        />
         <div>
           <span class="material-icons search-icon">search</span>
         </div>

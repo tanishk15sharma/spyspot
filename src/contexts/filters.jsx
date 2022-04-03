@@ -10,6 +10,8 @@ const filterReducer = (state, action) => {
       return { ...state, activeBtn: action.payload };
     case "SET_CATEGORIES":
       return { ...state, categories: action.payload };
+    case "SEARCH_KEY":
+      return { ...state, searchVideo: action.payload };
     default:
       return state;
   }
@@ -18,6 +20,7 @@ const initialState = {
   categories: [],
   category: "All",
   activeBtn: "",
+  searchVideo: "",
 };
 
 const FilterContextProvider = ({ children }) => {

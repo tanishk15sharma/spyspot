@@ -11,7 +11,8 @@ const VideosListing = () => {
 
   const filteredVideos = getFilteredVideos(
     state.allVideos,
-    filterState.category
+    filterState.category,
+    filterState.searchVideo
   );
 
   return (

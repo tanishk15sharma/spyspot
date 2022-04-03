@@ -1,8 +1,16 @@
 import axios from "axios";
 
-const getFilteredVideos = (products, category) => {
-  if (category === "All") return products;
-  return products.filter((product) => product.category === category);
+const getFilteredVideos = (videos, category, searchKey) => {
+  return videos
+    .filter((video) => {
+      if (category === "All") return videos;
+      video.category === category;
+    })
+    .filter(
+      (video) =>
+        video.title.toLowerCase().includes(searchKey.toLowerCase()) ||
+        video.category.toLowerCase().includes(searchKey.toLowerCase())
+    );
 };
 
 const getAllVideos = async () => {
