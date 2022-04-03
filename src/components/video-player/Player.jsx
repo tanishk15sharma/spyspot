@@ -35,8 +35,10 @@ const Player = () => {
           />
         ) : null}
         <div className="player-details">
-          <div className="player-options">
-            <div className="txt-xxl">{video.title}</div>
+          <div className="player-head">
+            <div className="txt-xxl">
+              {video.title} <span className="light-name">{video.category}</span>
+            </div>
             <div>
               <span className="player-nav" onClick={() => setToggleModal(true)}>
                 <i className="fa-solid fa-plus player-icon"></i>
@@ -59,7 +61,7 @@ const Player = () => {
               </span>
             </div>
           </div>
-          <div className="video-type">{video.category}</div>
+
           <p className="video-desp">{video.description}</p>
         </div>
       </div>

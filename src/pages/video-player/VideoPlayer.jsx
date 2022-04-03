@@ -6,11 +6,11 @@ const VideoPlayer = () => {
   return (
     <div>
       <div>
-        <div className="left">
+        <div>
           <Nav />
         </div>
         <Sidebar />
-        <div className="left">
+        <div>
           <Player />
         </div>
       </div>
