@@ -5,6 +5,7 @@ import {
   deleteHistoryVideo,
 } from "../../utilities/history-utils";
 import "./HistoryVideos.css";
+import { Link } from "react-router-dom";
 
 const HistoryVideos = () => {
   const { state, dispatch } = useUserVideos();
@@ -32,10 +33,12 @@ const HistoryVideos = () => {
             <div className="history-video">
               <div className="flex-history">
                 <div className="xl-img">
-                  <img
-                    src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
-                    className="full-img"
-                  />
+                  <Link to={`/videos/${video._id}`}>
+                    <img
+                      src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`}
+                      className="full-img"
+                    />
+                  </Link>
                 </div>
                 <div>
                   <h3>{video.title}</h3>

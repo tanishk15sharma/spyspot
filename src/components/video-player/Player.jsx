@@ -13,7 +13,7 @@ const Player = () => {
 
   const video = state.allVideos.find((item) => item._id === videoId);
   if (!video) {
-    return <div className="loader-hourglass"></div>;
+    return <div class="loader-hourglass"></div>;
   }
   return (
     <div className="player-container">
