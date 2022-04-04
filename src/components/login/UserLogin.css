@@ -1,10 +1,10 @@
 .ab-center {
   background-color: var(--background-secondary-color);
-  z-index: 6;
+  z-index: 11;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -78%);
+  transform: translate(-50%, 45%);
   background: var(--background-secondary-color);
   padding: 2rem;
 }
@@ -60,4 +60,13 @@
 .fa-circle-exclamation {
   color: var(--error-color);
   margin-right: 0.3rem;
+}
+@media (max-width: 670px) {
+  .btn-sm {
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+  }
+  .secondary-txt {
+    margin-right: 1rem;
+  }
 }

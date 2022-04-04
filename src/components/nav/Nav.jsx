@@ -13,7 +13,7 @@ const Nav = () => {
       <div>
         <div className="logo">
           <i
-            class="fa-solid fa-bars nav-menu-bar"
+            className="fa-solid fa-bars nav-menu-bar"
             onClick={() => setToggleMenu(true)}
           ></i>
           <Menu menuVal={toggleMenu} setMenu={() => setToggleMenu(false)} />
@@ -30,7 +30,7 @@ const Nav = () => {
           }
         />
         <div>
-          <span class="material-icons search-icon">search</span>
+          <span className="material-icons search-icon">search</span>
         </div>
       </div>
       <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
