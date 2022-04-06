@@ -57,7 +57,7 @@ const UserLogin = ({ toggleLogin }) => {
     });
   };
   return (
-    <form className="ab-center" onSubmit={handleSubmit} ref={loginRef}>
+    <form className="fx-center" onSubmit={handleSubmit} ref={loginRef}>
       <div className="form-div">
         <input
           className="bg-input"

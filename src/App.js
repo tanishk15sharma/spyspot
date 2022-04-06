@@ -11,7 +11,7 @@ import {
 } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
 import { RequiresAuth } from "./components/RequiresAuth";
-
+import { Signup } from "../src/components/signup/Signup";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
           path="/watchlater"
           element={

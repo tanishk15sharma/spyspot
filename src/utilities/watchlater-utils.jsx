@@ -24,7 +24,7 @@ const addToWatchLater = async (video, dispatch) => {
 
     dispatch({ type: "ADD_TO_WATCHLATER", payload: data.watchLater });
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     alert(err.response.data.errors);
   }
 };

@@ -1,4 +1,4 @@
-.ab-center {
+.fx-center {
   background-color: var(--background-secondary-color);
   z-index: 11;
   position: fixed;
@@ -7,6 +7,7 @@
   transform: translate(-50%, -50%);
   background: var(--background-secondary-color);
   padding: 2rem;
+  width: 30%;
 }
 .form-div {
   display: flex;
