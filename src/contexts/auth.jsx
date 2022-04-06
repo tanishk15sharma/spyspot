@@ -10,18 +10,17 @@ const authReducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        isAuth: true,
+        isLoggedIn: true,
         user: action.payload,
       };
-
     case "USER_LOAD_FALIUR":
-      return { ...state, isAuthanticaded: false, loading: false };
+      return { ...state, isLoggedIn: false, loading: false };
   }
 };
 
 const AuthContextProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, {
-    isAuth: localStorage.getItem("token") ? true : false,
+    isLoggedIn: false,
     loading: false,
     user: null,
   });

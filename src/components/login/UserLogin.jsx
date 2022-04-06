@@ -28,9 +28,7 @@ const UserLogin = ({ toggleLogin }) => {
   const postLoginDetails = async (email, password) => {
     try {
       authDispatch({ type: "USER_LOAD" });
-
       const { data } = await axios.post("/api/auth/login", { email, password });
-
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
     } catch (err) {
