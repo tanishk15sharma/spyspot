@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useAuth } from "../../contexts/auth";
+import { validSignUp } from "../../utilities/auth-utils";
 
 const Signup = () => {
   const { authDispatch } = useAuth();
@@ -40,18 +41,22 @@ const Signup = () => {
   const postSignUpDetails = async (e) => {
     try {
       e.preventDefault();
+
+      const { isValid, errors } = validSignUp(signUpData, signUpErrors);
+      if (!isValid) {
+        setSignUpErrors(errors);
+        return;
+      }
       authDispatch({ type: "USER_LOAD" });
-      const res = await axios.post("/api/auth/signup", signUpData);
+      const { data } = await axios.post("/api/auth/signup", signUpData);
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.createdUser });
       localStorage.setItem("token", data.encodedToken);
       localStorage.setItem("isLogin", true);
-      console.log(res);
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(signUpData);
   return (
     <form className="fx-center" onSubmit={postSignUpDetails}>
       <div className="form-div">
@@ -62,6 +67,12 @@ const Signup = () => {
           onChange={inputHandler}
           value={signUpData.firstName}
         />
+        {signUpErrors.firstName && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.firstName}
+          </span>
+        )}
         <input
           placeholder="LAST NAME"
           className="bg-input"
@@ -69,6 +80,14 @@ const Signup = () => {
           onChange={inputHandler}
           value={signUpData.lastName}
         />
+
+        {signUpErrors.lastName && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.lastName}
+          </span>
+        )}
+
         <input
           placeholder="EMAIL"
           className="bg-input"
@@ -76,6 +95,14 @@ const Signup = () => {
           onChange={inputHandler}
           value={signUpData.email}
         />
+
+        {signUpErrors.email && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.email}
+          </span>
+        )}
+
         <input
           type="text"
           placeholder="PASSWORD"
@@ -84,6 +111,14 @@ const Signup = () => {
           onChange={inputHandler}
           value={signUpData.password}
         />
+
+        {signUpErrors.password && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.password}
+          </span>
+        )}
+
         <input
           placeholder="CONFIRM PASSWORD"
           className="bg-input"
@@ -91,6 +126,14 @@ const Signup = () => {
           onChange={inputHandler}
           value={signUpData.confirmPassword}
         />
+
+        {signUpErrors.confirmPassword && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.confirmPassword}
+          </span>
+        )}
+
         <div>
           <input
             type="checkbox"
@@ -101,6 +144,14 @@ const Signup = () => {
           />{" "}
           <label htmlFor="terms">I accept all Terms & Conditions</label>
         </div>
+
+        {signUpErrors.terms && (
+          <span className="err-msg">
+            <i className="fa-solid fa-circle-exclamation"></i>
+            {signUpErrors.terms}
+          </span>
+        )}
+
         <button className="user-btn" type="submit">
           CREATE NEW ACCOUNT
         </button>
