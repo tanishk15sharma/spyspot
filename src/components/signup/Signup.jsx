@@ -1,6 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useAuth } from "../../contexts/auth";
 
 const Signup = () => {
+  const { authDispatch } = useAuth();
   const [signUpData, setSignUpData] = useState({
     firstName: "",
     lastName: "",
@@ -33,9 +36,24 @@ const Signup = () => {
       [e.target.name]: "",
     }));
   };
+
+  const postSignUpDetails = async (e) => {
+    try {
+      e.preventDefault();
+      authDispatch({ type: "USER_LOAD" });
+      const res = await axios.post("/api/auth/signup", signUpData);
+      authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.createdUser });
+      localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("isLogin", true);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   console.log(signUpData);
   return (
-    <form className="fx-center">
+    <form className="fx-center" onSubmit={postSignUpDetails}>
       <div className="form-div">
         <input
           placeholder="FIRST NAME"
@@ -83,7 +101,9 @@ const Signup = () => {
           />{" "}
           <label htmlFor="terms">I accept all Terms & Conditions</label>
         </div>
-        <button className="user-btn">CREATE NEW ACCOUNT</button>
+        <button className="user-btn" type="submit">
+          CREATE NEW ACCOUNT
+        </button>
       </div>
     </form>
   );
