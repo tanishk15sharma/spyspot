@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "../../contexts/auth";
 import { useFilters } from "../../contexts/filters";
 import { UserLogin } from "../login/UserLogin";
 import { Menu } from "../sidebar/Menu";
@@ -7,7 +8,12 @@ const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const { filterDispatch } = useFilters();
-
+  const { authState } = useAuth();
+  const isLogin = localStorage.getItem("isLogin");
+  const logoutHandler = () => {
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("token");
+  };
   return (
     <nav>
       <div>
@@ -33,10 +39,23 @@ const Nav = () => {
           <span className="material-icons search-icon">search</span>
         </div>
       </div>
-      <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
+
+      {isLogin ? (
+        <button className="btn" onClick={() => logoutHandler()}>
+          <i className="fa-solid fa-circle-user"></i>
+          LOGOUT
+        </button>
+      ) : (
+        <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
+          <i className="fa-solid fa-circle-user"></i>
+          LOGIN
+        </button>
+      )}
+
+      {/* <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
         <i className="fa-solid fa-circle-user"></i>
         LOGIN
-      </button>
+      </button> */}
 
       {toggleLogin ? (
         <UserLogin toggleLogin={() => setToggleLogin(false)} />

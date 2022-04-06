@@ -15,7 +15,7 @@ const UserLogin = ({ toggleLogin }) => {
     email: "",
     password: "",
   });
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -32,6 +32,7 @@ const UserLogin = ({ toggleLogin }) => {
       console.log(data);
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
+      localStorage.setItem("isLogin", true);
     } catch (err) {
       console.log(err);
     }
