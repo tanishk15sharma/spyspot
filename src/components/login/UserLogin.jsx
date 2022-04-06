@@ -29,6 +29,7 @@ const UserLogin = ({ toggleLogin }) => {
     try {
       authDispatch({ type: "USER_LOAD" });
       const { data } = await axios.post("/api/auth/login", { email, password });
+      console.log(data);
       authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
     } catch (err) {
@@ -90,7 +91,7 @@ const UserLogin = ({ toggleLogin }) => {
             className="btn-sm"
             onClick={() => {
               testHandler();
-              setToggleVal(false);
+              toggleLogin(false);
             }}
           >
             TEST LOGIN
