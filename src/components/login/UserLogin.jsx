@@ -16,7 +16,7 @@ const UserLogin = ({ toggleLogin }) => {
     email: "",
     password: "",
   });
-  const { authState, authDispatch } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -28,12 +28,13 @@ const UserLogin = ({ toggleLogin }) => {
 
   const postLoginDetails = async (email, password) => {
     try {
-      authDispatch({ type: "USER_LOAD" });
-      const { data } = await axios.post("/api/auth/login", { email, password });
+      const { data, status } = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
+      if (status !== 200) return;
       console.log(data);
-      authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("isLogin", true);
+      setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
     } catch (err) {
       console.log(err);
     }
@@ -93,10 +94,10 @@ const UserLogin = ({ toggleLogin }) => {
           </Link>
           <button
             className="btn-sm"
-            onClick={() => {
-              testHandler();
-              toggleLogin(false);
-            }}
+            onClick={
+              () => testHandler()
+              // toggleLogin(false);
+            }
           >
             TEST LOGIN
           </button>
