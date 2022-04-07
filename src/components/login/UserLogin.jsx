@@ -4,9 +4,11 @@ import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const UserLogin = ({ toggleLogin }) => {
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const loginRef = useRef(null);
   const [loginData, setLoginData] = useState({
@@ -19,9 +21,9 @@ const UserLogin = ({ toggleLogin }) => {
   });
   const { auth, setAuth } = useAuth();
 
-  useEffect(() => {
-    auth.isLoggedIn && navigate("/");
-  }, [auth.isLoggedIn]);
+  // useEffect(() => {
+  //   auth.isLoggedIn && navigate("/");
+  // }, [auth.isLoggedIn]);
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -38,8 +40,8 @@ const UserLogin = ({ toggleLogin }) => {
         password,
       });
       if (status !== 200) return;
-      console.log(data);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
     }
