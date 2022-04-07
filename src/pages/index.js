@@ -5,3 +5,4 @@ export { VideoPlayer } from "./video-player/VideoPlayer";
 export { Playlists } from "./playlists/Playlists";
 export { History } from "./videos-history/History";
 export { Home } from "./home/Home";
+export { PageNotFound } from "./PageNotFound";
