@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
 import { validSignUp } from "../../utilities/auth-utils";
 
 const Signup = () => {
-  const { authDispatch } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  const { setAuth } = useAuth();
   const [signUpData, setSignUpData] = useState({
     firstName: "",
     lastName: "",
@@ -41,17 +46,15 @@ const Signup = () => {
   const postSignUpDetails = async (e) => {
     try {
       e.preventDefault();
-
       const { isValid, errors } = validSignUp(signUpData, signUpErrors);
       if (!isValid) {
         setSignUpErrors(errors);
         return;
       }
-      authDispatch({ type: "USER_LOAD" });
-      const { data } = await axios.post("/api/auth/signup", signUpData);
-      authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.createdUser });
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("isLogin", true);
+      const { data, status } = await axios.post("/api/auth/signup", signUpData);
+      if (status !== 201) return;
+      setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
     }

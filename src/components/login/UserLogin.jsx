@@ -19,7 +19,7 @@ const UserLogin = ({ toggleLogin }) => {
     email: "",
     password: "",
   });
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
   // useEffect(() => {
   //   auth.isLoggedIn && navigate("/");
