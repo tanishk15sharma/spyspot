@@ -8,6 +8,7 @@ import {
   Playlists,
   History,
   Home,
+  PageNotFound,
 } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
 import { RequiresAuth } from "./components/RequiresAuth";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/*" element={<PageNotFound />} />
         <Route
           path="/watchlater"
           element={
@@ -53,10 +55,6 @@ function App() {
             </RequiresAuth>
           }
         />
-        {/* <Route path="/watchlater" element={<WatchLater />} /> */}
-        {/* <Route path="/likes" element={<Like />} /> */}
-        {/* <Route path="/playlists" element={<Playlists />} /> */}
-        {/* <Route path="/history" element={<History />} /> */}
       </Routes>
     </BrowserRouter>
   );
