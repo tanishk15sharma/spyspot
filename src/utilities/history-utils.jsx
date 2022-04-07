@@ -8,6 +8,7 @@ const getHistoryArr = async () => {
         authorization: getToken(),
       },
     });
+
     return data.history;
   } catch (err) {
     console.log(err);

@@ -23,7 +23,7 @@ const SuggestionChips = () => {
           className={`btn btn-round ${
             _id === filterState.activeBtn ||
             categoryName === filterState.activeBtn
-              ? "active"
+              ? "activeChip"
               : ""
           }`}
           key={_id}

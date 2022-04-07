@@ -1,11 +1,15 @@
 import "./UserLogin.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const UserLogin = ({ toggleLogin }) => {
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const loginRef = useRef(null);
   const [loginData, setLoginData] = useState({
     email: "",
@@ -15,7 +19,11 @@ const UserLogin = ({ toggleLogin }) => {
     email: "",
     password: "",
   });
-  const { authDispatch } = useAuth();
+  const { setAuth } = useAuth();
+
+  // useEffect(() => {
+  //   auth.isLoggedIn && navigate("/");
+  // }, [auth.isLoggedIn]);
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -27,12 +35,13 @@ const UserLogin = ({ toggleLogin }) => {
 
   const postLoginDetails = async (email, password) => {
     try {
-      authDispatch({ type: "USER_LOAD" });
-
-      const { data } = await axios.post("/api/auth/login", { email, password });
-
-      authDispatch({ type: "USER_LOAD_SUCCESS", payload: data.foundUser });
-      localStorage.setItem("token", data.encodedToken);
+      const { data, status } = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
+      if (status !== 200) return;
+      setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
     }
@@ -57,7 +66,7 @@ const UserLogin = ({ toggleLogin }) => {
     });
   };
   return (
-    <form className="ab-center" onSubmit={handleSubmit} ref={loginRef}>
+    <form className="fx-center" onSubmit={handleSubmit} ref={loginRef}>
       <div className="form-div">
         <input
           className="bg-input"
@@ -86,14 +95,16 @@ const UserLogin = ({ toggleLogin }) => {
           </span>
         )}
         <button className="user-btn">Login</button>
-        <div>
-          <span className="secondary-txt">CREATE NEW ACCOUNT</span>
+        <div className="flex-sb">
+          <Link to="/signup">
+            <span className="secondary-txt">CREATE NEW ACCOUNT</span>
+          </Link>
           <button
             className="btn-sm"
-            onClick={() => {
-              testHandler();
-              setToggleVal(false);
-            }}
+            onClick={
+              () => testHandler()
+              // toggleLogin(false);
+            }
           >
             TEST LOGIN
           </button>

@@ -22,7 +22,7 @@
   background-color: var(--primary-color);
   color: var(--background-light-color);
 }
-.active {
+.activeChip {
   border: 1px solid var(--primary-color);
   background-color: var(--primary-color);
   color: var(--background-light-color);

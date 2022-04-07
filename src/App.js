@@ -10,7 +10,8 @@ import {
   Home,
 } from "./pages";
 import { UserLogin } from "./components/login/UserLogin";
-
+import { RequiresAuth } from "./components/RequiresAuth";
+import { Signup } from "../src/components/signup/Signup";
 function App() {
   return (
     <BrowserRouter>
@@ -19,10 +20,43 @@ function App() {
         <Route path="/videos" element={<Videos />} />
         <Route path="/videos/:videoId" element={<VideoPlayer />} />
         <Route path="/login" element={<UserLogin />} />
-        <Route path="/watchlater" element={<WatchLater />} />
-        <Route path="/likes" element={<Like />} />
-        <Route path="/playlists" element={<Playlists />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/watchlater"
+          element={
+            <RequiresAuth>
+              <WatchLater />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/likes"
+          element={
+            <RequiresAuth>
+              <Like />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlists"
+          element={
+            <RequiresAuth>
+              <Playlists />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <History />
+            </RequiresAuth>
+          }
+        />
+        {/* <Route path="/watchlater" element={<WatchLater />} /> */}
+        {/* <Route path="/likes" element={<Like />} /> */}
+        {/* <Route path="/playlists" element={<Playlists />} /> */}
+        {/* <Route path="/history" element={<History />} /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -4,7 +4,6 @@
 
 .hero-div {
   background: var(--background-primary-color);
-  /* width: 100%; */
 }
 .left {
   width: 95%;
@@ -30,6 +29,7 @@
 .option {
   border-bottom: 1px solid var(--background-light-color);
   padding: 0.5rem 0rem;
+  cursor: pointer;
 }
 .margin-r-sm {
   margin-right: 0.5rem;
