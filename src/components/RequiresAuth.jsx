@@ -2,12 +2,10 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
 
 const RequiresAuth = ({ children }) => {
-  const { authState } = useAuth();
-  console.log(authState.isLoggedIn);
+  const { auth } = useAuth();
+  console.log(auth.isLoggedIn);
   return (
-    <div>
-      {authState.isLoggedIn ? children : <Navigate to="/login" replace />}
-    </div>
+    <div>{auth.isLoggedIn ? children : <Navigate to="/login" replace />}</div>
   );
 };
 

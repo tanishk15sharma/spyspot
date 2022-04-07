@@ -8,11 +8,10 @@ const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const { filterDispatch } = useFilters();
-  const { authState } = useAuth();
-  const isLogin = localStorage.getItem("isLogin");
+  const { auth, setAuth } = useAuth();
+
   const logoutHandler = () => {
-    localStorage.removeItem("isLogin");
-    localStorage.removeItem("token");
+    setAuth({ isLoggedIn: false, encodedToken: "" });
   };
   return (
     <nav>
@@ -40,7 +39,7 @@ const Nav = () => {
         </div>
       </div>
 
-      {isLogin ? (
+      {auth.isLoggedIn ? (
         <button className="btn" onClick={() => logoutHandler()}>
           <i className="fa-solid fa-circle-user"></i>
           LOGOUT

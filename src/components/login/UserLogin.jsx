@@ -1,12 +1,13 @@
 import "./UserLogin.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserLogin = ({ toggleLogin }) => {
+  const navigate = useNavigate();
   const loginRef = useRef(null);
   const [loginData, setLoginData] = useState({
     email: "",
@@ -17,6 +18,10 @@ const UserLogin = ({ toggleLogin }) => {
     password: "",
   });
   const { auth, setAuth } = useAuth();
+
+  useEffect(() => {
+    auth.isLoggedIn && navigate("/");
+  }, [auth.isLoggedIn]);
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
