@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
+import { Link } from "react-router-dom";
 
 const UserLogin = ({ toggleLogin }) => {
   const loginRef = useRef(null);
@@ -86,8 +87,10 @@ const UserLogin = ({ toggleLogin }) => {
           </span>
         )}
         <button className="user-btn">Login</button>
-        <div>
-          <span className="secondary-txt">CREATE NEW ACCOUNT</span>
+        <div className="flex-sb">
+          <Link to="/signup">
+            <span className="secondary-txt">CREATE NEW ACCOUNT</span>
+          </Link>
           <button
             className="btn-sm"
             onClick={() => {

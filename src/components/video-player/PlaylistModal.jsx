@@ -27,7 +27,7 @@ const PlaylistModal = ({ video, toggleModal }) => {
 
   return (
     <div className="a">
-      <div className="ab-center" ref={modalRef}>
+      <div className="fx-center-small" ref={modalRef}>
         <div className="line">
           {state.playlists.length === 0 ? (
             <h4 className="light-name">Create a playlist </h4>
