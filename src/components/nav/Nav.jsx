@@ -3,6 +3,8 @@ import { useAuth } from "../../contexts/auth";
 import { useFilters } from "../../contexts/filters";
 import { UserLogin } from "../login/UserLogin";
 import { Menu } from "../sidebar/Menu";
+import toast from "react-hot-toast";
+
 import "./Nav.css";
 const Nav = () => {
   const [toggleLogin, setToggleLogin] = useState(false);
@@ -12,6 +14,7 @@ const Nav = () => {
 
   const logoutHandler = () => {
     setAuth({ isLoggedIn: false, encodedToken: "" });
+    toast.success(`Bye bye !`);
   };
   return (
     <nav>
@@ -51,16 +54,9 @@ const Nav = () => {
         </button>
       )}
 
-      {/* <button className="btn" onClick={() => setToggleLogin((val) => !val)}>
-        <i className="fa-solid fa-circle-user"></i>
-        LOGIN
-      </button> */}
-
       {toggleLogin ? (
         <UserLogin toggleLogin={() => setToggleLogin(false)} />
       ) : null}
-
-      {/* <UserLogin toggleVal={toggleLogin} setToggleVal={setToggleLogin} /> */}
     </nav>
   );
 };

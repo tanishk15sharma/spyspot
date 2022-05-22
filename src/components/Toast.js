@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 const Toast = () => {
   return (
     <Toaster
-      position="bottom-left"
+      position="top-center"
       reverseOrder={false}
       gutter={8}
       containerClassName=""
@@ -13,11 +13,11 @@ const Toast = () => {
         className: "",
         duration: 3000,
         style: {
-          background: "#363636",
+          background: "#380912",
           color: "#fff",
         },
         success: {
-          duration: 2000,
+          duration: 3000,
           theme: {
             primary: "green",
             secondary: "black",

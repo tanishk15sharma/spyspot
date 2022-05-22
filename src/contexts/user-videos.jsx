@@ -87,7 +87,7 @@ const UserVideosProvider = ({ children }) => {
     playlists: [],
     history: [],
   });
-  console.log(state);
+
   return (
     <UserVideosContext.Provider value={{ state, dispatch }}>
       {children}

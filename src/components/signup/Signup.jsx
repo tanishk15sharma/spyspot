@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
 import { validSignUp } from "../../utilities/auth-utils";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -55,9 +56,13 @@ const Signup = () => {
       if (status !== 201) return;
       console.log(data);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      toast.success(`Hello ${data.createdUser.firstName},  welcome back !`);
+
       navigate(from, { replace: true });
     } catch (err) {
-      console.log(err);
+      err.response.status === 422
+        ? toast.error("Email already exists")
+        : toast.error("try again!");
     }
   };
 

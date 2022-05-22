@@ -13,9 +13,11 @@ import {
 import { UserLogin } from "./components/login/UserLogin";
 import { RequiresAuth } from "./components/RequiresAuth";
 import { Signup } from "../src/components/signup/Signup";
+import { Toast } from "./components/Toast";
 function App() {
   return (
     <BrowserRouter>
+      <Toast />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/videos" element={<Videos />} />

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getToken } from "./helper-utils";
+import toast from "react-hot-toast";
 
 const getPlaylists = async () => {
   try {
@@ -8,6 +9,7 @@ const getPlaylists = async () => {
         authorization: getToken(),
       },
     });
+
     return data.playlists;
   } catch (err) {
     console.log(err);
@@ -26,8 +28,10 @@ const createPlaylist = async (name, dispatch) => {
     );
 
     dispatch({ type: "ADD_TO_PLAYLISTS", payload: data.playlists });
+    toast.success("New Playlist Created");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and try again");
   }
 };
 
@@ -37,22 +41,12 @@ const deletePlaylist = async (id, dispatch) => {
       headers: { authorization: getToken() },
     });
     dispatch({ type: "DELETE_FROM_PLAYLISTS", payload: data.playlists });
+    toast.success("Playlist is Deleted");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and try again");
   }
 };
-// playlist
-
-// const setPlaylist = async (id) => {
-//   try {
-//     const res = await axios.get(`/api/user/playlists/${id}`, {
-//       headers: { authorization: getToken() },
-//     });
-//     console.log(res);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 const addVideoToPlaylist = async (id, video, dispatch) => {
   try {
@@ -67,8 +61,10 @@ const addVideoToPlaylist = async (id, video, dispatch) => {
     );
 
     dispatch({ type: "ADD_VIDEO", payload: data.playlist });
+    toast.success("Video added to Playlist");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and try again");
   }
 };
 
@@ -83,8 +79,10 @@ const removeVideoFromPlaylist = async (playlistId, videoId, dispatch) => {
       }
     );
     dispatch({ type: "REMOVE_VIDEO", payload: data.playlist });
+    toast.success("Video removed from Playlist");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and try again");
   }
 };
 

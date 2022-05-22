@@ -1,4 +1,6 @@
 import axios from "axios";
+import toast from "react-hot-toast";
+
 import { getToken } from "./helper-utils";
 
 const getWatchLaterArr = async () => {
@@ -23,9 +25,10 @@ const addToWatchLater = async (video, dispatch) => {
     );
 
     dispatch({ type: "ADD_TO_WATCHLATER", payload: data.watchLater });
+    toast.success("Add to watch later");
   } catch (err) {
     console.log(err.response);
-    alert(err.response.data.errors);
+    toast.error("Please login");
   }
 };
 
@@ -35,8 +38,10 @@ const removeFromWatchLater = async (id, dispatch) => {
       headers: { authorization: getToken() },
     });
     dispatch({ type: "REMOVE_FROM_WATCHLATER", payload: data.watchLater });
+    toast.success("Video removed");
   } catch (err) {
     console.log(err);
+    toast.error("Try again");
   }
 };
 

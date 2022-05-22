@@ -1,10 +1,11 @@
 import "./UserLogin.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth";
 import { validLogin } from "../../utilities/auth-utils";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UserLogin = ({ toggleLogin }) => {
   const location = useLocation();
@@ -20,10 +21,6 @@ const UserLogin = ({ toggleLogin }) => {
     password: "",
   });
   const { setAuth } = useAuth();
-
-  // useEffect(() => {
-  //   auth.isLoggedIn && navigate("/");
-  // }, [auth.isLoggedIn]);
 
   const inputHandler = (e) => {
     setLoginData((data) => ({ ...data, [e.target.name]: e.target.value }));
@@ -41,10 +38,11 @@ const UserLogin = ({ toggleLogin }) => {
       });
       if (status !== 200) return;
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
+      toast.success(`Hello ${data.foundUser.firstName},  welcome back !`);
       navigate(from, { replace: true });
-      console.log(data);
     } catch (err) {
       console.log(err);
+      toast.error("Refresh and try again!");
     }
   };
   const handleSubmit = (e) => {
@@ -100,13 +98,7 @@ const UserLogin = ({ toggleLogin }) => {
           <Link to="/signup">
             <span className="secondary-txt">CREATE NEW ACCOUNT</span>
           </Link>
-          <button
-            className="btn-sm"
-            onClick={
-              () => testHandler()
-              // toggleLogin(false);
-            }
-          >
+          <button className="btn-sm" onClick={() => testHandler()}>
             TEST LOGIN
           </button>
         </div>

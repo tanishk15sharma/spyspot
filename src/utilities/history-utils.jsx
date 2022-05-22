@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getToken } from "./helper-utils";
+import toast from "react-hot-toast";
 
 const getHistoryArr = async () => {
   try {
@@ -35,8 +36,10 @@ const deleteHistoryVideo = async (id, dispatch) => {
       headers: { authorization: getToken() },
     });
     dispatch({ type: "REMOVE_FROM_HISTORY", payload: data.history });
+    toast.success("Video removed");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and Try again");
   }
 };
 
@@ -47,8 +50,10 @@ const clearHistory = async (dispatch) => {
     });
 
     dispatch({ type: "CLEAR_HISTORY", payload: data.history });
+    toast.success("All Videos are removed");
   } catch (err) {
     console.log(err);
+    toast.error("Refresh and Try again");
   }
 };
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getToken } from "./helper-utils";
+import toast from "react-hot-toast";
 
 const getLikesArr = async () => {
   try {
@@ -26,9 +27,10 @@ const likeVideo = async (video, dispatch) => {
       }
     );
     dispatch({ type: "ADD_TO_LIKES", payload: data.likes });
+    toast.success("Video Liked");
   } catch (err) {
     console.log(err);
-    alert(err.response.data.errors);
+    toast.error("Please Login to Like video");
   }
 };
 
@@ -38,8 +40,10 @@ const dislikeVideo = async (id, dispatch) => {
       headers: { authorization: getToken() },
     });
     dispatch({ type: "REMOVE_FROM_LIKES", payload: data.likes });
+    toast.success("Video Disliked");
   } catch (err) {
     console.log(err);
+    toast.error("Try Again");
   }
 };
 export { getLikesArr, likeVideo, dislikeVideo };
