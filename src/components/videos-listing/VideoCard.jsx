@@ -29,22 +29,30 @@ const VideoCard = ({ video }) => {
           onClick={() => setToggleOptions((val) => !val)}
         ></i>
       </div>
-      <div
-        className="video-options"
-        style={{ display: !toggleOptions && "none" }}
-      >
-        <div
-          className="option"
-          onClick={() => addToWatchLater(video, dispatch)}
-        >
-          <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
-          Save to Watch Later
+      {toggleOptions && (
+        <div className="video-options">
+          <div
+            className="option"
+            onClick={() => {
+              addToWatchLater(video, dispatch);
+              setToggleOptions((val) => !val);
+            }}
+          >
+            <i className="fa-solid fa-clock-rotate-left margin-r-sm"></i>
+            Save to Watch Later
+          </div>
+          <div
+            className="option"
+            onClick={() => {
+              likeVideo(video, dispatch);
+              setToggleOptions((val) => !val);
+            }}
+          >
+            <i className="fa-solid fa-thumbs-up margin-r-sm"></i>
+            Like Video
+          </div>
         </div>
-        <div className="option" onClick={() => likeVideo(video, dispatch)}>
-          <i className="fa-solid fa-thumbs-up margin-r-sm"></i>
-          Like Video
-        </div>
-      </div>
+      )}
       <div className="video-type">{video.category}</div>
     </div>
   );
