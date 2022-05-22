@@ -1,0 +1,14 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.error-text {
+  color: #9c7178;
+}
+.error-icon {
+  color: #ef4444;
+  font-size: 16rem;
+}
