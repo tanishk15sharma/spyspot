@@ -56,7 +56,9 @@ const Signup = () => {
       if (status !== 201) return;
       console.log(data);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
-      toast.success(`Hello ${data.createdUser.firstName},  welcome back !`);
+      toast.success(
+        `Hello ${data.createdUser.firstName},  welcome to spyspot !`
+      );
 
       navigate(from, { replace: true });
     } catch (err) {

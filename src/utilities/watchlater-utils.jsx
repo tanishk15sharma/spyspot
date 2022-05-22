@@ -28,7 +28,9 @@ const addToWatchLater = async (video, dispatch) => {
     toast.success("Add to watch later");
   } catch (err) {
     console.log(err.response);
-    toast.error("Please login");
+    err.response.status === 409
+      ? toast.error(err.response.data.errors)
+      : toast.error("Please login");
   }
 };
 

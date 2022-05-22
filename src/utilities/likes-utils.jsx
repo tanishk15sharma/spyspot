@@ -30,7 +30,9 @@ const likeVideo = async (video, dispatch) => {
     toast.success("Video Liked");
   } catch (err) {
     console.log(err);
-    toast.error("Please Login to Like video");
+    err.response.status === 409
+      ? toast.error(err.response.data.errors)
+      : toast.error("Please login");
   }
 };
 

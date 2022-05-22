@@ -60,8 +60,8 @@ const UserLogin = ({ toggleLogin }) => {
 
   const testHandler = () => {
     setLoginData({
-      email: "adarshbalika@gmail.com",
-      password: "adarshBalika123",
+      email: "tanishksharma@gmail.com",
+      password: "tanishk123",
     });
   };
   return (

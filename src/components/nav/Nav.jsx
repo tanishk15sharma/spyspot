@@ -14,7 +14,7 @@ const Nav = () => {
 
   const logoutHandler = () => {
     setAuth({ isLoggedIn: false, encodedToken: "" });
-    toast.success(`Bye bye !`);
+    toast.success(`Bye bye ! see you soon`);
   };
   return (
     <nav>
