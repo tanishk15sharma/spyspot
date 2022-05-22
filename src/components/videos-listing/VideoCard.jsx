@@ -8,7 +8,6 @@ import { addVideoToHistory } from "../../utilities/history-utils";
 
 const VideoCard = ({ video }) => {
   const [toggleOptions, setToggleOptions] = useState(false);
-
   const { dispatch } = useUserVideos();
   return (
     <div className="video-card relative">

@@ -53,6 +53,7 @@ const Signup = () => {
       }
       const { data, status } = await axios.post("/api/auth/signup", signUpData);
       if (status !== 201) return;
+      console.log(data);
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
       navigate(from, { replace: true });
     } catch (err) {

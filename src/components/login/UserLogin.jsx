@@ -42,6 +42,7 @@ const UserLogin = ({ toggleLogin }) => {
       if (status !== 200) return;
       setAuth({ isLoggedIn: true, encodedToken: data.encodedToken });
       navigate(from, { replace: true });
+      console.log(data);
     } catch (err) {
       console.log(err);
     }

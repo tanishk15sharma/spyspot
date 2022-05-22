@@ -5,12 +5,14 @@ import { likeVideo } from "../../utilities/likes-utils";
 import { addToWatchLater } from "../../utilities/watchlater-utils";
 import "./Player.css";
 import { PlaylistModal } from "./PlaylistModal";
-
+import { useAuth } from "../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 const Player = () => {
   const { videoId } = useParams();
   const { state, dispatch } = useUserVideos();
   const [toggleModal, setToggleModal] = useState(false);
-
+  const { auth } = useAuth();
+  const navigate = useNavigate();
   const video = state.allVideos.find((item) => item._id === videoId);
   if (!video) {
     return <div class="loader-hourglass"></div>;
@@ -28,12 +30,6 @@ const Player = () => {
           allowFullScreen
         ></iframe>
 
-        {toggleModal ? (
-          <PlaylistModal
-            video={video}
-            toggleModal={() => setToggleModal(false)}
-          />
-        ) : null}
         <div className="player-details">
           <div className="player-head">
             <div className="txt-xxl">
@@ -44,6 +40,16 @@ const Player = () => {
                 <i className="fa-solid fa-plus player-icon"></i>
                 Add to playlist
               </span>
+              {auth.isLoggedIn ? (
+                toggleModal ? (
+                  <PlaylistModal
+                    video={video}
+                    toggleModal={() => setToggleModal(false)}
+                  />
+                ) : null
+              ) : (
+                navigate("/login")
+              )}
 
               <span
                 className="player-nav"
