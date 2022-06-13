@@ -86,18 +86,15 @@
   box-shadow: var(--gradient-color) 0px 20px 30px -10px;
 }
 
-@media (max-width: 1190px) {
-  .home {
-    grid-template-columns: 1fr;
-  }
-  .category-box {
-    position: static;
-  }
-  .video {
+@media (max-width: 1000px) {
+  video {
     display: none;
   }
   .category-box {
     flex-wrap: wrap;
     margin-bottom: 1rem;
+  }
+  .landing-info {
+    margin-top: 1rem;
   }
 }

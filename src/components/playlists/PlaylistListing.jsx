@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useUserVideos } from "../../contexts/user-videos.jsx";
+import { NoData } from "../no-data/NoData.jsx";
 import { AddPlaylist } from "./AddPlaylist.jsx";
 import { PlaylistBox } from "./PlaylistBox.jsx";
 import "./PlaylistListing.css";
@@ -21,9 +22,13 @@ const PlaylistListing = () => {
           <AddPlaylist toggleInput={() => setToggleInputBox(false)} />
         ) : null}
         <div>
-          {state.playlists.map((playlist) => (
-            <PlaylistBox playlist={playlist} key={playlist._id} />
-          ))}
+          {state.playlists.length === 0 ? (
+            <NoData />
+          ) : (
+            state.playlists.map((playlist) => (
+              <PlaylistBox playlist={playlist} key={playlist._id} />
+            ))
+          )}
         </div>
       </div>
     </>

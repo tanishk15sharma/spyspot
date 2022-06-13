@@ -7,8 +7,15 @@ import {
 import "./HistoryVideos.css";
 import { Link } from "react-router-dom";
 
+import { NoData } from "../no-data/NoData";
+
 const HistoryVideos = () => {
   const { state, dispatch } = useUserVideos();
+
+  if (state.history.length === 0) {
+    return <NoData />;
+  }
+
   return (
     <div className="history-container">
       <div className="history-info">

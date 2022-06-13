@@ -3,8 +3,13 @@ import { useUserVideos } from "../../contexts/user-videos";
 import { removeFromWatchLater } from "../../utilities/watchlater-utils";
 import "./WatchLaterListing.css";
 import { Link } from "react-router-dom";
+import { NoData } from "../no-data/NoData";
 const WatchLaterListing = () => {
   const { state, dispatch } = useUserVideos();
+
+  if (state.history.length === 0) {
+    return <NoData />;
+  }
 
   return (
     <>
