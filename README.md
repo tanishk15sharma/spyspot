@@ -1,9 +1,9 @@
 
 ### About
-Spyspot is a video library where you'll find a curated set of basketball videos.
+Spyspot is a video library where you'll find a curated set of basketball videos.you can enjoy watching them, save them for later, like/dislike them and store them in playlists.
 
 ### Preview
-
+https://spyspot.vercel.app/
 
 ### Tech Stack
 Frontend: React, Vanilla CSS, furbish UI(own component library), React Router v6  
